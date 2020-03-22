@@ -1,0 +1,51 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <!-- start ./ menu -->
+    <div th:fragment="menu" class="menu">
+        <ul>
+            <li><a class="frist-list" href="#"><i class="fas fa-smile-wink"></i> <span class="title-item">PC Admin</span></a></li>
+            <hr class="sidebar-divider">
+            <li><a href="#"><i class="fas fa-fw fa-tachometer-alt"></i>  <span class="title-item-2">Database</span></a></li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading title-list ">INTERFACE</div>
+            <li><a class="item-list" href="#"><i class="fas fa-fw fa-cog"></i>  <span>Sản phẩm</span> <i style="float: right; line-height: 24px;" class="fas fa-chevron-right left-more"></i></a>
+                <ul class="supMenu">
+                    <div>Sản phẩm</div>
+                    <li><a href="#">Thêm sản phẩm</a></li>
+                    <li><a href="#">Sửa sản phẩm</a></li>
+                    <li><a href="#">Xóa sản phẩm</a></li>
+                </ul>
+            </li>
+            <li><a class="item-list" href="#"><i class="fas fa-fw fa-wrench"></i>  <span>Người dùng</span> <i style="float: right; line-height: 24px;" class="fas fa-chevron-right left-more"></i></a>
+                <ul class="supMenu">
+                    <div>Người dùng</div>
+                    <li><a href="#">Thêm người dùng</a></li>
+                    <li><a href="#">Sửa người dùng</a></li>
+                    <li><a href="#">Xóa người dùng</a></li>
+                </ul>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading title-list ">ADDONS</div>
+            <li class="left-menu-1">
+                <a class="item-list" href="#">
+                    <i class="fas fa-fw fa-folder"></i> <span>Pages</span> <i style="float: right; line-height: 24px;" class="fas fa-chevron-right left-more"></i></a>
+                <ul class="supMenu">
+                    <div>Components</div>
+                    <li><a href="#">CCCC</a></li>
+                    <li><a href="#">CCCC</a></li>
+                </ul>
+            </li>
+            <li class="left-menu-1">
+                <a class="item-list" href="#">
+                    <i class="fas fa-fw fa-chart-area"></i> </span>Chars</span>
+                </a>
+            </li>
+            <li class="left-menu-1">
+                <a class="item-list" href="#">
+                    <i class="fas fa-fw fa-table"></i> <span>Tables</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <button id="btn-min-Menu"><i class="fas fa-chevron-left"></i></button>
+        </ul>
+    </div>
+    <!-- end ./ menu -->
+</div>
