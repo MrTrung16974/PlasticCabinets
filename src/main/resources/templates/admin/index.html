@@ -32,7 +32,9 @@
             <!-- end ./ header -->
 
             <!-- start ./ content -->
-            <div th:replace="/admin/page/home :: home"></div>
+            <div th:replace="${page}"></div>
+            <!--<div th:replace="/admin/page/home :: home"></div>-->
+
             <!-- end ./ content -->
 
             <!-- start ./ footer -->

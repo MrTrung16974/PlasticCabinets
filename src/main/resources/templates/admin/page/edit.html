@@ -1,0 +1,38 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <!-- Start ./ editProduct-->
+    <div th:fragment="editProduct" class="editProduct">
+        <div class="form-group">
+            <label for="productName">Name :</label>
+            <input type="text" class="form-control" id="productName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">
+        </div>
+        <div class="form-group">
+            <label for="productDescription">Description :</label>
+            <input type="text" class="form-control" id="productDescription" aria-describedby="emailHelp" placeholder="Nhập mô tả của sản phẩm">
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Price :</label>
+            <input type="number" class="form-control" id="productPrice" aria-describedby="emailHelp" placeholder="Nhập giá tiền của sản phẩm">
+        </div>
+        <div class="form-group">
+            <label for="productStar">Star :</label>
+            <input type="number" class="form-control" id="productStar" aria-describedby="emailHelp" placeholder="Nhập đánh giả của sản phẩm từ 1 - 5">
+        </div>
+        <div class="form-group" style="border: none">
+            <label for="productImage">Image :</label>
+            <input type="file" name="file" class="form-control" id="productImage" aria-describedby="emailHelp">
+            <img id="newImageProduct" width="200" height="200"  alt="">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" id="submitProduct" class="btn btn-primary"
+            >Save changes</button>
+        </div>
+    </div>
+    <!--End ./ editProduct-->
+
+    <!-- Start ./ editUser-->
+    <div th:fragment="editUser"  class="editProduct">
+
+    </div>
+    <!--End ./ editUser-->
+</div>
