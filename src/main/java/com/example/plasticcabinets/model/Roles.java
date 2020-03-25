@@ -1,18 +1,22 @@
 package com.example.plasticcabinets.model;
 
+import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-@Table(name = "roles")
-@EntityListeners(AuditingEntityListener.class)
+@Accessors(chain = true)
 @Entity
-public class Roles  implements Serializable {
+@Table(name = "roles")
+public class Roles {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "role_name")
@@ -28,6 +32,18 @@ public class Roles  implements Serializable {
 
     @Column(name = "create_by")
     private Integer createBy;
+
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "role_function",
+            joinColumns = {
+                    @JoinColumn(name = "role_id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "function_id")})
+    private Set<Functions> functions = new HashSet<>();
 
     public Roles(String roleName, Date created_date, Date modifieddate, Integer createBy) {
         this.roleName = roleName;

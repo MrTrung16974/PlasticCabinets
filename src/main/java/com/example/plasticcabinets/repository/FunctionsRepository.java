@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface FunctionsRepository extends JpaRepository<Functions, Integer> {
+public interface FunctionsRepository extends JpaRepository<Functions, String> {
 
 }

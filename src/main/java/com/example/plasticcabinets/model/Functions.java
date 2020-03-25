@@ -1,5 +1,7 @@
 package com.example.plasticcabinets.model;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -8,15 +10,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Table(name = "functions")
-@EntityListeners(AuditingEntityListener.class)
+@Data
+@Accessors(chain = true)
 @Entity
-public class Functions  implements Serializable {
+public class Functions {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer functionsCode;
+    @Column(name = "function_code")
+    private String functionsCode;
 
-    @Column(name = "function_name")
-    private String functionName;
+    @Column(name = "description")
+    private String description;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -29,31 +32,32 @@ public class Functions  implements Serializable {
     @Column(name = "create_by")
     private Integer createBy;
 
-    public  Functions() {
+    public Functions() {
 
     }
 
-    public Functions(String functionName, Date created_date, Date modifieddate, Integer createBy) {
-        this.functionName = functionName;
+    public Functions(String functionsCode, String description, Date created_date, Date modifieddate, Integer createBy) {
+        this.functionsCode = functionsCode;
+        this.description = description;
         this.created_date = created_date;
         this.modifieddate = modifieddate;
         this.createBy = createBy;
     }
 
-    public Integer getFunctionsCode() {
+    public String getFunctionsCode() {
         return functionsCode;
     }
 
-    public void setFunctionsCode(Integer functionsCode) {
+    public void setFunctionsCode(String functionsCode) {
         this.functionsCode = functionsCode;
     }
 
-    public String getFunctionName() {
-        return functionName;
+    public String getDescription() {
+        return description;
     }
 
-    public void setFunctionName(String functionName) {
-        this.functionName = functionName;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getCreated_date() {
@@ -80,3 +84,4 @@ public class Functions  implements Serializable {
         this.createBy = createBy;
     }
 }
+

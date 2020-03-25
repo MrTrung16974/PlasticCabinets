@@ -1,5 +1,8 @@
 package com.example.plasticcabinets.model;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -7,16 +10,19 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Table(name = "role_function")
-@EntityListeners(AuditingEntityListener.class)
+@Data
+@Accessors(chain = true)
 @Entity
-public class RoleFunction implements Serializable {
+@Table(name = "role_function")
+public class RoleFunction {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name = "native_generator", strategy = "native")
+    @GeneratedValue(generator = "native_generator")
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "function_id")
-    private Integer functionId;
+    private String functionId;
 
     @Column(name = "role_id")
     private Integer roleId;
@@ -32,7 +38,7 @@ public class RoleFunction implements Serializable {
     @Column(name = "create_by")
     private Integer createBy;
 
-    public RoleFunction(Integer functionId, Integer roleId, Date created_date, Date modifieddate, Integer createBy) {
+    public RoleFunction(String functionId, Integer roleId, Date created_date, Date modifieddate, Integer createBy) {
         this.functionId = functionId;
         this.roleId = roleId;
         this.created_date = created_date;
@@ -48,11 +54,11 @@ public class RoleFunction implements Serializable {
         this.id = id;
     }
 
-    public Integer getFunctionId() {
+    public String getFunctionId() {
         return functionId;
     }
 
-    public void setFunctionId(Integer functionId) {
+    public void setFunctionId(String functionId) {
         this.functionId = functionId;
     }
 

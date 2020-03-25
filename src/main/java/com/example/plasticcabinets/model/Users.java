@@ -1,5 +1,7 @@
 package com.example.plasticcabinets.model;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -7,12 +9,14 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Table(name = "users")
-@EntityListeners(AuditingEntityListener.class)
+@Data
+@Accessors(chain = true)
 @Entity
-public class Users  implements Serializable {
+@Table(name = "users")
+public class Users{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "name")
