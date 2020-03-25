@@ -59,6 +59,9 @@ public class Users  implements Serializable {
     @Column(name = "create_by")
     private Integer createBy;
 
+    public Users() {
+
+    }
     public Users(String name, String account, String password, String accountBank, String address, String userFace, String email, Boolean sex, Date birthday, Integer phone, Integer roleId, Date created_date, Date modifieddate, Integer createBy) {
         this.name = name;
         this.account = account;
