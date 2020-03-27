@@ -1,5 +1,6 @@
 package com.example.plasticcabinets.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Table(name = "product")
 @EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(value = {"created_date", "modifieddate"}, allowGetters = true)
 @Entity
 public class Products  implements Serializable {
     @Id
@@ -17,6 +19,9 @@ public class Products  implements Serializable {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
+    private  String description;
 
     @Column(name = "img_product")
     private String imgProduct;
@@ -27,8 +32,8 @@ public class Products  implements Serializable {
     @Column(name = "old_price")
     private String oldPrice;
 
-    @Column(name = "promotional")
-    private Integer promotional;
+    @Column(name = "promotion")
+    private Integer promotion;
 
     @Column(name = "star")
     private Integer star;
@@ -50,12 +55,13 @@ public class Products  implements Serializable {
     @Column(name = "create_by")
     private Integer createBy;
 
-    public Products(String name, String imgProduct, String newPrice, String oldPrice, Integer promotional, Integer star, Integer userId, Integer idImg, Date created_date, Date modifieddate, Integer createBy) {
+    public Products(String name, String description, String imgProduct, String newPrice, String oldPrice, Integer promotion, Integer star, Integer userId, Integer idImg, Date created_date, Date modifieddate, Integer createBy) {
         this.name = name;
+        this.description = description;
         this.imgProduct = imgProduct;
         this.newPrice = newPrice;
         this.oldPrice = oldPrice;
-        this.promotional = promotional;
+        this.promotion = promotion;
         this.star = star;
         this.userId = userId;
         this.idImg = idImg;
@@ -104,12 +110,20 @@ public class Products  implements Serializable {
         this.oldPrice = oldPrice;
     }
 
-    public Integer getPromotional() {
-        return promotional;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPromotional(Integer promotional) {
-        this.promotional = promotional;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(Integer promotion) {
+        this.promotion = promotion;
     }
 
     public Integer getStar() {

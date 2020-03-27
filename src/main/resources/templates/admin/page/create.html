@@ -1,13 +1,69 @@
 <div xmlns:th="http://www.thymeleaf.org">
     <!-- Start ./ createProduct-->
     <div style="display: none" th:fragment="createProduct" id="createProduct" class="convert-page">
-
+        <div class="form-group">
+            <label for="createProductName">Name :</label>
+            <input type="text" class="form-control" id="createProductName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">
+        </div>
+        <div class="form-group">
+            <label for="createProductDescription">Description :</label>
+            <input type="text" class="form-control" id="createProductDescription" aria-describedby="emailHelp" placeholder="Nhập mô tả của sản phẩm">
+        </div>
+        <div class="form-group" style="border: none">
+            <label for="createProductImage">Image :</label>
+            <input type="file" name="file" class="form-control productImage" id="createProductImage" aria-describedby="emailHelp">
+            <img id="newImageProduct" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
+        </div>
+        <div class="form-group">
+            <label for="createProductNewPrice">New Price :</label>
+            <input type="number" class="form-control" id="createProductNewPrice" aria-describedby="emailHelp" placeholder="Nhập giá tiền mới của sản phẩm">
+        </div>
+        <div class="form-group">
+            <label for="createProductOldPrice">Old Price :</label>
+            <input type="number" class="form-control" id="createProductOldPrice" aria-describedby="emailHelp" placeholder="Nhập giá tiền cũ của sản phẩm">
+        </div>
+        <div class="form-group">
+            <label for="createProductPromotion">Promotion :</label>
+            <input type="number" class="form-control" id="createProductPromotion" aria-describedby="emailHelp" placeholder="Mời nhâp khuyển mãi của sản phẩm!">
+        </div>
+        <div class="form-group">
+            <label for="createProductStar">Star :</label>
+            <input type="number" class="form-control" id="createProductStar" aria-describedby="emailHelp" placeholder="Nhập đánh giả của sản phẩm từ 1 - 5">
+        </div>
+        <div class="modal-footer btn-save">
+            <button type="button" id="btnSaveProductCreate" class="btn btn-primary"
+            >Save changes</button>
+        </div>
     </div>
     <!--End ./ createProduct-->
 
     <!-- Start ./ createUser-->
     <div style="display: none" th:fragment="createUser" id="createUser"  class="convert-page">
-
+        <div class="form-group">
+            <label for="createUserName">Name :</label>
+            <input type="text" class="form-control" id="createUserName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">
+        </div>
+        <div class="form-group">
+            <label for="createUserDescription">Description :</label>
+            <input type="text" class="form-control" id="createUserDescription" aria-describedby="emailHelp" placeholder="Nhập mô tả của sản phẩm">
+        </div>
+        <div class="form-group">
+            <label for="createUserPrice">Price :</label>
+            <input type="number" class="form-control" id="createUserPrice" aria-describedby="emailHelp" placeholder="Nhập giá tiền của sản phẩm">
+        </div>
+        <div class="form-group">
+            <label for="createUserStar">Star :</label>
+            <input type="number" class="form-control" id="createUserStar" aria-describedby="emailHelp" placeholder="Nhập đánh giả của sản phẩm từ 1 - 5">
+        </div>
+        <div class="form-group" style="border: none">
+            <label for="createUserImage">Image :</label>
+            <input type="file" name="file" class="form-control productImage" id="createUserImage" aria-describedby="emailHelp">
+            <img id="newImageProduct" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
+        </div>
+        <div class="modal-footer btn-save">
+            <button type="button" id="btnSaveUserCreate" class="btn btn-primary"
+            >Save changes</button>
+        </div>
     </div>
     <!--End ./ createUser-->
 </div>

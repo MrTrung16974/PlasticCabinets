@@ -71,11 +71,11 @@ $(document).ready(function() {
 
     $("#btnDeleteUser").click(function () {
         home.attr("style", "display: none");
-        createProduct.attr("style", "display: none");
-        createUser.attr("style", "display: none");
-        deleteProduct.attr("style", "display: none");
-        deleteUser.attr("style", "display: block");
-        editProduct.attr("style", "display: none");
-        deleteUser.attr("style", "display: none");
+        createProduct.attr("style", "display: none;");
+        createUser.attr("style", "display: none;");
+        deleteProduct.attr("style", "display: none;");
+        deleteUser.attr("style", "display: block;");
+        editProduct.attr("style", "display: none;");
+        editUser.attr("style", "display: none;");
     });
 });

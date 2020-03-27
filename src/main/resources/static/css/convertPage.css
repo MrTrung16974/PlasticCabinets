@@ -1,3 +1,74 @@
 .convert-page {
-    margin-left: 10px;
+    margin: 20px 30px;
+}
+
+.displayBlock {
+    display: inline-block;
+}
+
+.left-menu-1 {
+    padding: 10px 27px !important;
+}
+
+.min-max-width {
+    width: 100px !important;
+}
+
+.left-menu {
+    text-align: center !important;
+}
+
+.rightContent {
+    margin-left: 100px !important;
+}
+
+.marginTop {
+    margin-top: 0px !important;
+}
+
+.min-font {
+    font-size: 11px !important;
+    text-align: center !important;
+}
+
+.big-font {
+    font-size: 30px !important;
+}
+
+.item-menu {
+    display: none !important;
+}
+
+.title-list {
+    color: rgba(255, 255, 255, .4);
+    font-size: 12px;
+    text-align: left;
+    padding: 0px 10px;
+}
+
+.item-list {
+    color: rgba(255, 255, 255, .8) !important;
+    font-size: 12px;
+}
+
+.frist-list {
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.tran-Menu {
+    position: absolute;
+    top: 0px;
+    left: 100px;
+    box-shadow: 0px 0px 30px #aca0b780;
+    z-index: 100;
+}
+
+.modal-footer.btn-save {
+    border: none;
+}
+input.productImage {
+    border: none;
+    padding: 0;
 }

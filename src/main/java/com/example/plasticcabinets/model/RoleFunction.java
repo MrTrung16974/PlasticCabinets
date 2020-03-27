@@ -1,5 +1,6 @@
 package com.example.plasticcabinets.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Table(name = "role_function")
 @EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(value = {"created_date", "modifieddate"}, allowGetters = true)
 @Entity
 public class RoleFunction implements Serializable {
     @Id
@@ -26,7 +28,9 @@ public class RoleFunction implements Serializable {
     @CreatedDate
     private Date created_date;
 
-    @Column(name = "modifieddate")
+    @Column(nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
     private Date modifieddate;
 
     @Column(name = "create_by")

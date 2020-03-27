@@ -39,10 +39,11 @@ public class ProductApiController {
     public Products updateProduct(@Valid @PathVariable(value = "id") Integer productId, @Valid @RequestBody Products productDetail) {
         Products product = productsRepository.findById(productId).orElseThrow(() -> new ResurceNotFoundException("Product", "id", productId));
         product.setName(productDetail.getName());
+        product.setDescription(productDetail.getDescription());
         product.setImgProduct(productDetail.getImgProduct());
         product.setNewPrice(productDetail.getNewPrice());
         product.setOldPrice(productDetail.getOldPrice());
-        product.setPromotional(productDetail.getPromotional());
+        product.setPromotion(productDetail.getPromotion());
         product.setStar(productDetail.getStar());
         Products updateProduct = productsRepository.save(product);
         return updateProduct;
