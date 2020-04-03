@@ -2,7 +2,7 @@
     <!-- start ./ menu -->
     <div th:fragment="menu" class="menu">
         <ul>
-            <li id="home"><a class="frist-list" href="#"><i class="fas fa-smile-wink"></i> <span class="title-item">PC Admin</span></a></li>
+            <li id="home"><a class="frist-list" th:href="@{'/product/home'}"><i class="fas fa-smile-wink"></i> <span class="title-item">PC Admin</span></a></li>
             <hr class="sidebar-divider">
             <li><a href="#"><i class="fas fa-fw fa-tachometer-alt"></i>  <span class="title-item-2">Database</span></a></li>
             <hr class="sidebar-divider">
@@ -10,17 +10,15 @@
             <li><a class="item-list" href="#"><i class="fas fa-fw fa-cog"></i>  <span>Sản phẩm</span> <i style="float: right; line-height: 24px;" class="fas fa-chevron-right left-more"></i></a>
                 <ul class="supMenu">
                     <div>Sản phẩm</div>
-                    <li id="btnCreateProduct" ><a href="#">Thêm sản phẩm</a></li>
-                    <li id="btnEditProduct"><a href="#">Sửa sản phẩm</a></li>
-                    <li id="btnDeleteProduct"><a href="#">Xóa sản phẩm</a></li>
+                    <li id="btnCreateProduct" ><a  th:href="@{/product/createProduct}">Thêm sản phẩm</a></li>
+                    <li id="btnDeleteProduct"><a th:href="@{/product/deleteProduct}">Xóa, Sửa sản phẩm</a></li>
                 </ul>
             </li>
             <li><a class="item-list" href="#"><i class="fas fa-fw fa-wrench"></i>  <span>Người dùng</span> <i style="float: right; line-height: 24px;" class="fas fa-chevron-right left-more"></i></a>
                 <ul class="supMenu">
                     <div>Người dùng</div>
-                    <li id="btnCreateUser"><a href="#">Thêm người dùng</a></li>
-                    <li id="btnEditUser"><a href="#">Sửa người dùng</a></li>
-                    <li id="btnDeleteUser"><a href="#">Xóa người dùng</a></li>
+                    <li id="btnCreateUser"><a th:href="@{/product/createUser}">Thêm người dùng</a></li>
+                    <li id="btnDeleteUser"><a th:href="@{/product/deleteUser}">Xóa, Sửa người dùng</a></li>
                 </ul>
             </li>
             <hr class="sidebar-divider">

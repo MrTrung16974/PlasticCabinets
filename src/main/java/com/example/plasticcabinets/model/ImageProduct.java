@@ -1,7 +1,10 @@
 package com.example.plasticcabinets.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -14,7 +17,8 @@ import java.util.Date;
 @Entity
 public class ImageProduct implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "img_product_1")
@@ -37,12 +41,12 @@ public class ImageProduct implements Serializable {
     @CreatedDate
     private Date created_date;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
+    @LastModifiedDate
     private Date modifieddate;
 
-    @Column(name = "create_by")
+    @Column(name = "createby")
     private Integer createBy;
 
     public ImageProduct() {

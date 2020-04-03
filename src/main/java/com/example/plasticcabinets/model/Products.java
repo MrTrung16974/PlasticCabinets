@@ -1,20 +1,23 @@
 package com.example.plasticcabinets.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Table(name = "product")
+@Table(name = "products")
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"created_date", "modifieddate"}, allowGetters = true)
+@JsonIgnoreProperties(value = {"created_date", "modified_date"}, allowGetters = true)
 @Entity
-public class Products  implements Serializable {
+public class Products implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "name")
@@ -41,6 +44,9 @@ public class Products  implements Serializable {
     @Column(name = "user_id")
     private Integer userId;
 
+    @Column(name = "category_id")
+    private Integer categoryId;
+
     @Column(name = "id_img")
     private Integer idImg;
 
@@ -49,13 +55,19 @@ public class Products  implements Serializable {
     @CreatedDate
     private Date created_date;
 
-    @Column(name = "modifieddate")
-    private Date modifieddate;
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
+    private Date modified_date;
 
     @Column(name = "create_by")
     private Integer createBy;
 
-    public Products(String name, String description, String imgProduct, String newPrice, String oldPrice, Integer promotion, Integer star, Integer userId, Integer idImg, Date created_date, Date modifieddate, Integer createBy) {
+
+    public Products() {
+    }
+
+    public Products(String name, String description, String imgProduct, String newPrice, String oldPrice, Integer promotion, Integer star, Integer userId, Integer categoryId, Integer idImg, Date created_date, Date modified_date, Integer createBy) {
         this.name = name;
         this.description = description;
         this.imgProduct = imgProduct;
@@ -64,9 +76,10 @@ public class Products  implements Serializable {
         this.promotion = promotion;
         this.star = star;
         this.userId = userId;
+        this.categoryId = categoryId;
         this.idImg = idImg;
         this.created_date = created_date;
-        this.modifieddate = modifieddate;
+        this.modified_date = modified_date;
         this.createBy = createBy;
     }
 
@@ -84,6 +97,14 @@ public class Products  implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImgProduct() {
@@ -110,14 +131,6 @@ public class Products  implements Serializable {
         this.oldPrice = oldPrice;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Integer getPromotion() {
         return promotion;
     }
@@ -142,6 +155,14 @@ public class Products  implements Serializable {
         this.userId = userId;
     }
 
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
     public Integer getIdImg() {
         return idImg;
     }
@@ -158,12 +179,12 @@ public class Products  implements Serializable {
         this.created_date = created_date;
     }
 
-    public Date getModifieddate() {
-        return modifieddate;
+    public Date getModified_date() {
+        return modified_date;
     }
 
-    public void setModifieddate(Date modifieddate) {
-        this.modifieddate = modifieddate;
+    public void setModified_date(Date modified_date) {
+        this.modified_date = modified_date;
     }
 
     public Integer getCreateBy() {
@@ -172,5 +193,24 @@ public class Products  implements Serializable {
 
     public void setCreateBy(Integer createBy) {
         this.createBy = createBy;
+    }
+
+    @Override
+    public String toString() {
+        return "Products{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", imgProduct='" + imgProduct + '\'' +
+                ", newPrice='" + newPrice + '\'' +
+                ", oldPrice='" + oldPrice + '\'' +
+                ", promotion=" + promotion +
+                ", star=" + star +
+                ", userId=" + userId +
+                ", idImg=" + idImg +
+                ", created_date=" + created_date +
+                ", modifieddate=" + modified_date +
+                ", createBy=" + createBy +
+                '}';
     }
 }

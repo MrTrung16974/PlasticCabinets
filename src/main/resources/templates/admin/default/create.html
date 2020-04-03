@@ -1,6 +1,6 @@
 <div xmlns:th="http://www.thymeleaf.org">
     <!-- Start ./ createProduct-->
-    <div style="display: none" th:fragment="createProduct" id="createProduct" class="convert-page">
+    <div  th:fragment="createProduct" id="createProduct" class="convert-page">
         <div class="form-group">
             <label for="createProductName">Name :</label>
             <input type="text" class="form-control" id="createProductName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">
@@ -10,9 +10,29 @@
             <input type="text" class="form-control" id="createProductDescription" aria-describedby="emailHelp" placeholder="Nhập mô tả của sản phẩm">
         </div>
         <div class="form-group" style="border: none">
-            <label for="createProductImage">Image :</label>
-            <input type="file" name="file" class="form-control productImage" id="createProductImage" aria-describedby="emailHelp">
-            <img id="newImageProduct" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
+            <label for="createProductImage1">Image 1 :</label>
+            <input type="file" name="file" class="form-control productImage createProduct " id="createProductImage1" aria-describedby="emailHelp">
+            <img id="newImageProduct1" class="newImageProduct" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
+        </div>
+        <div class="form-group" style="border: none">
+            <label for="createProductImage2">Image 2 :</label>
+            <input type="file" name="file" class="form-control productImage createProduct" id="createProductImage2" aria-describedby="emailHelp">
+            <img id="newImageProduct2" class="newImageProduct" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
+        </div>
+        <div class="form-group" style="border: none">
+            <label for="createProductImage3">Image 3 :</label>
+            <input type="file" name="file" class="form-control productImage createProduct" id="createProductImage3" aria-describedby="emailHelp">
+            <img id="newImageProduct3" class="newImageProduct" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
+        </div>
+        <div class="form-group" style="border: none">
+            <label for="createProductImage4">Image 4 :</label>
+            <input type="file" name="file" class="form-control productImage createProduct" id="createProductImage4" aria-describedby="emailHelp">
+            <img id="newImageProduct4" class="newImageProduct" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
+        </div>
+        <div class="form-group" style="border: none">
+            <label for="createProductImage5">Image 5 :</label>
+            <input type="file" name="file" class="form-control productImage createProduct" id="createProductImage5" aria-describedby="emailHelp">
+            <img id="newImageProduct5" class="newImageProduct" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
         </div>
         <div class="form-group">
             <label for="createProductNewPrice">New Price :</label>
@@ -38,7 +58,7 @@
     <!--End ./ createProduct-->
 
     <!-- Start ./ createUser-->
-    <div style="display: none" th:fragment="createUser" id="createUser"  class="convert-page">
+    <div  th:fragment="createUser" id="createUser"  class="convert-page">
         <div class="form-group">
             <label for="createUserName">Name :</label>
             <input type="text" class="form-control" id="createUserName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">

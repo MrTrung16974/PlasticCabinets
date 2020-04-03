@@ -1,5 +1,5 @@
 .convert-page {
-    margin: 20px 30px;
+    margin: 10px 20px;
 }
 
 .displayBlock {
@@ -64,11 +64,6 @@
     box-shadow: 0px 0px 30px #aca0b780;
     z-index: 100;
 }
-
-.modal-footer.btn-save {
-    border: none;
-}
-input.productImage {
-    border: none;
-    padding: 0;
-}
+input.productImage.createProduct {
+     border: none;
+ }

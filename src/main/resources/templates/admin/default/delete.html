@@ -1,0 +1,50 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <!-- Start ./ deleteProduct-->
+    <div th:fragment="deleteProduct" id="deleteProduct" class="convert-page">
+        <div class="form-group">
+            <label for="productName">Name :</label>
+            <input type="text" class="form-control" id="productName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">
+        </div>
+        <div class="modal-footer btn-save">
+            <button type="button" id="btnSaveProductDelete" class="btn btn-primary btn-save"
+            >Search</button>
+        </div>
+        <div th:each="product : ${lstProduct}" class="product">
+            <input type="hidden" id="deleteProductId"
+                   th:value="${product.getId()}">
+            <div class="image-info">
+                <img width="100" height="100" th:src="@{${product.getImgProduct()}}" id="imageProduct" alt="">
+                <span class="promotion" th:text="${product.getPromotion()}"></span>
+            </div>
+            <div class="info-product">
+                <p th:text="${product.getName()}"></p>
+                <p th:text="${#numbers.formatDecimal(product.getNewPrice(), 0, 'COMMA', 4 ,'POINT')} + 'VNĐ'"></p>
+                <p th:text="${product.getOldPrice()}"></p>
+                <p th:text="${product.getDescription()}"></p>
+                <div class="rating text-warning">
+                    <i th:each="i : ${#numbers.sequence(1,5)}"
+                       th:class="${product.getStar() >= i ? 'fa fa-star' : 'fa fa-star-o'}"
+                       aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="manipulation">
+                <a  th:href="@{${'/delete/' + product.getId()}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                <a  id="Productdetail" th:href="@{${'/product/edit/' + product.getId()} + '/detail'}"  class="btn btn-danger"><i class="fas fa-edit"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--End ./ deleteProduct-->
+
+    <!-- Start ./ deleteUser-->
+    <div th:fragment="deleteUser" id="deleteUser" class="convert-page">
+        <div class="form-group">deleteUser
+            <label for="userName">Name :</label>
+            <input type="text" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">
+        </div>
+        <div class="modal-footer btn-save">
+            <button type="button" id="btnSaveUserDelete" class="btn btn-primary"
+            >Delete</button>
+        </div>
+    </div>
+    <!--End ./ deleteUser-->
+</div>

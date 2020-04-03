@@ -2,6 +2,7 @@ package com.example.plasticcabinets.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -25,9 +26,9 @@ public class Functions  implements Serializable {
     @CreatedDate
     private Date created_date;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
+    @LastModifiedBy
     private Date modifieddate;
 
     @Column(name = "create_by")

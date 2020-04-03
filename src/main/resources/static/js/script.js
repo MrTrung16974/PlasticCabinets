@@ -2,7 +2,7 @@ $(document).ready(function() {
     var temp = 1;
     var minLeft = $("div.left-content");
     var minMenu = $("div#left-content div.menu");
-    var leftMenu = $("div.full-width div.left-content div.menu>ul li");
+    var leftMenu = $("div.full-width div.left-content div.menu>ul>li");
     var itemMenu = $(".left-more");
     var titleItem = $(".title-item");
     var title = $(".sidebar-heading.title-list")

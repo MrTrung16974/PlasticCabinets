@@ -1,51 +1,141 @@
 $(document).ready(function () {
-   $("#createProductImage").on('change', function () {
-        var formData = new FormData();
-        formData.append('file', $('#createProductImage')[0].files[0]);
+    let productImage = $("input.productImage.createProduct");
+    let newImageProduct = $("img.newImageProduct");
+    for (var i = 0; i < productImage.length; i++) {
+        let ImageProduct = productImage[i];
+        let newProductImage = newImageProduct[i];
+        ImageProduct.addEventListener('change', function () {
+            var formData = new FormData();
+            formData.append('file', ImageProduct.files[0]);
 
+            $.ajax({
+                url: 'http://localhost:8080/product/upload',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    newProductImage.src = data;
+                    toastr.success('Upload ảnh thành công ', 'Haha!');
+                },
+                error: function () {
+                    toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
+                }
+            });
+        });
+    }
+
+    $("#btnSaveProductCreate").on('click', function () {
+        console.log("OK1");
+        var imgProduct = {
+            imgProduct1: $("#newImageProduct1").attr('src'),
+            imgProduct2: $("#newImageProduct2").attr('src'),
+            imgProduct3: $("#newImageProduct3").attr('src'),
+            imgProduct4: $("#newImageProduct4").attr('src'),
+            imgProduct5: $("#newImageProduct5").attr('src')
+        };
+
+        console.log(imgProduct);
         $.ajax({
-           url: 'http://localhost:8080/upload',
-           type: 'POST',
-           data: formData,
-           processData: false,
-           contentType: false,
-           success: function(data) {
-               $("#newImageProduct").attr("src", data);
-               toastr.success('Upload ảnh thành công ', 'Haha!');
-           },
+            type: "POST",
+            url: "http://localhost:8080/product/img_product",
+            data: JSON.stringify(imgProduct),
+            contentType: 'application/json',
+            success: function (data) {
+                console.log(data);
+                window.location.reload();
+                toastr.success('Upload thành công ', 'Haha!');
+            },
             error: function () {
+                alert("Tạo mới sản phẩm thất bại!");
                 toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
             }
         });
-   });
+    });
 
-   $("#btnSaveProductCreate").on('click', function () {
-       console.log("OK");
-        var product = {
+    $("#btnSaveProductCreate").on('click', function () {
+        console.log("OK");
+        let idProduct = $("#editProductId").val();
+        let product = {
             name:$("#createProductName").val().trim(),
-            image: $("#imageProduct").attr('src'),
-            description:$("#createProductDescription").val(),
-            newPrice:$("#createProductNewPrice").val(),
-            oldPrice:$("#createProductOldPrice").val(),
-            productPromotion:$("#createProductPromotion").val(),
-            star: $("#productStar").val()
+            description:$("#createProductDescription").val().trim(),
+            imgProduct: $("#newImageProduct1").attr('src'),
+            newPrice:$("#createProductNewPrice").val().trim(),
+            oldPrice:$("#createProductOldPrice").val().trim(),
+            promotion:$("#createProductPromotion").val(),
+            star: $("#createProductStar").val()
         };
-
+        console.log(product);
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/product",
+            url: "http://localhost:8080/product/create",
             data: JSON.stringify(product),
             contentType: 'application/json',
             success: function(data) {
                 console.log(data);
-
-                if(data == 0) {
-                    window.location.reload();
-                    toastr.success('Upload thành công ', 'Haha!');
-                }else if(data==1) {
-                    alert("Tạo mới sản phẩm thất bại!");
-                }
+                window.location.reload();
+                toastr.success('Tạo mới sản phẩm thành công ', 'Haha!');
+            },
+            error: function () {
+                toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
             }
-            });
-   });
+        });
+    });
+
+    $("#btnSaveProductChange").on('click', function () {
+        console.log("OK");
+        let idProduct = $("#editProductId").val();
+        let product = {
+            name:$("#editProductName").val().trim(),
+            description:$("#editProductDescription").val().trim(),
+            imgProduct: $("#newImageProduct1").attr('src'),
+            newPrice:$("#editProductNewPrice").val().trim(),
+            oldPrice:$("#editProductOldPrice").val().trim(),
+            promotion:$("#editProductPromotion").val(),
+            star: $("#editProductStar").val()
+        };
+        console.log(product);
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/product/edit/" + idProduct,
+            data: JSON.stringify(product),
+            contentType: 'application/json',
+            success: function(data) {
+                console.log(data);
+                window.location.reload();
+                toastr.success('Upload thành công ', 'Haha!');
+            },
+            error: function () {
+                toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
+            }
+        });
+    });
+
+    // $("#btnSaveProductChange").on('click', function () {
+    //     console.log("OK1");
+    //     let idProduct = $("#editProductId").val();
+    //     let imgProduct = {
+    //         imgProduct1: $("#newImageProduct1").attr('src'),
+    //         imgProduct2: $("#newImageProduct2").attr('src'),
+    //         imgProduct3: $("#newImageProduct3").attr('src'),
+    //         imgProduct4: $("#newImageProduct4").attr('src'),
+    //         imgProduct5: $("#newImageProduct5").attr('src')
+    //     };
+    //
+    //     console.log(imgProduct);
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "http://localhost:8080/product/image-edit/" + idProduct,
+    //         data: JSON.stringify(imgProduct),
+    //         contentType: 'application/json',
+    //         success: function(data) {
+    //             console.log(data);
+    //             window.location.reload();
+    //             toastr.success('Upload thành công ', 'Haha!');
+    //         },
+    //         error: function () {
+    //             toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
+    //         }
+    //     });
+    // });
 });

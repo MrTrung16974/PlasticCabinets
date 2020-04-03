@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="/admin/default/header :: head"></div>
+<body>
+
+<div class="full-width">
+    <!-- start ./ left-content -->
+    <div id="left-content" class="left-content">
+        <!-- start ./ menu -->
+        <div th:replace="/admin/default/menu :: menu"></div>
+        <!-- end ./ menu -->
+    </div>
+    <!-- start ./ right-content -->
+    <div class="right-content">
+
+        <!-- start ./ header -->
+        <div th:replace="/admin/default/header :: header"></div>
+        <!-- end ./ header -->
+
+        <!-- start ./ content -->
+        <div th:replace="/admin/default/delete :: deleteUser"></div>
+        <!-- end ./ content -->
+
+        <!-- start ./ footer -->
+
+        <div th:replace="/admin/default/footer :: footer"> </div>
+        <!-- end ./ footer -->
+
+        <!-- end ./ right-content -->
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <div th:replace="/admin/default/footer :: javascript"> </div>
+
+</body>
+
+</html>

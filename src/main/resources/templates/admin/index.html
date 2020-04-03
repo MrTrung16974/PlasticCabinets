@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    <link rel="shortcut icon" th:href="@{image/favicon.png}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/image/favicon.png}" type="image/x-icon">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/convertPage.css}">
 
@@ -26,7 +26,6 @@
         <div th:replace="/admin/default/menu :: menu"></div>
         <!-- end ./ menu -->
         </div>
-
         <!-- start ./ right-content -->
         <div class="right-content">
 
@@ -35,13 +34,8 @@
             <!-- end ./ header -->
 
             <!-- start ./ content -->
-            <div th:replace="/admin/page/home :: home"></div>
-            <div th:replace="/admin/page/create :: createProduct"></div>
-            <div th:replace="/admin/page/create :: createUser"></div>
-            <div th:replace="/admin/page/edit :: editProduct"></div>
-            <div th:replace="/admin/page/edit :: editUser"></div>
-            <div th:replace="/admin/page/delete :: deleteProduct"></div>
-            <div th:replace="/admin/page/delete :: deleteUser"></div>
+
+            <div th:replace="/admin/default/home :: home"></div>
             <!-- end ./ content -->
 
             <!-- start ./ footer -->
