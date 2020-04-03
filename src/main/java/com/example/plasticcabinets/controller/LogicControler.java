@@ -2,6 +2,7 @@ package com.example.plasticcabinets.controller;
 
 import com.example.plasticcabinets.model.ImageProduct;
 import com.example.plasticcabinets.model.Products;
+import com.example.plasticcabinets.exception.ResurceNotFoundException;
 import com.example.plasticcabinets.repository.ImageProductRepository;
 import com.example.plasticcabinets.repository.ProductsRepository;
 import com.example.plasticcabinets.service.StoreFileService;
@@ -49,18 +50,20 @@ public class LogicControler {
     }
 
     @PostMapping("/edit/{id}")
-    public Integer editProduct(@PathVariable("id") Integer idProduct, @RequestBody Products product) {
+    @ResponseBody
+    public int editProduct(@PathVariable("id") Integer idProduct, @RequestBody Products product) {
         product.setId(idProduct);
         System.out.println(product);
-//        ProductModel productModel = productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product", "id", id));
+        Products productModel = productsRepository.findById(idProduct).orElseThrow(() -> new ResurceNotFoundException("Product", "id", idProduct));
         if (product.getDescription() != null && !product.getDescription().isEmpty()) {
-            product.setUserId(1);
-            product.setIdImg(1);
-            product.setCreateBy(1);
-            product.setCategoryId(1);
-            productsRepository.updateProduct(product.getId(), product.getName(),
-                    product.getDescription(), product.getImgProduct(), product.getNewPrice(), product.getOldPrice(),
-                    product.getPromotion(), product.getStar());
+            productModel.setName(product.getName());
+            productModel.setDescription(product.getDescription());
+            productModel.setImgProduct(product.getImgProduct());
+            productModel.setNewPrice(product.getNewPrice());
+            productModel.setOldPrice(product.getOldPrice());
+            productModel.setPromotion(product.getPromotion());
+            productModel.setStar(product.getStar());
+            Products newproducts = productsRepository.save(productModel);
         } else {
             return 4;
         }
@@ -68,10 +71,11 @@ public class LogicControler {
     }
 
     @PostMapping("/image-edit/{id}")
+    @ResponseBody
     public Integer editImageProduct(@PathVariable("id") Integer idImageProduct, @RequestBody ImageProduct imageProduct) {
         imageProduct.setId(idImageProduct);
         System.out.println(imageProduct);
-//        ProductModel productModel = productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product", "id", id));
+//        ImageProduct imageProductModel = productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product", "id", id));
         if (imageProduct.getImgProduct1() != null && !imageProduct.getImgProduct1() .isEmpty()) {
             imageProduct.setCreateBy(1);
             imageProductRepository.updateImageProduct(imageProduct.getId(), imageProduct.getImgProduct1(),
@@ -99,6 +103,7 @@ public class LogicControler {
         }
         return fileLink;
     }
+
     @PostMapping(value = "/img_product")
     @ResponseBody
     public int createImgProduct(@RequestBody ImageProduct imgProduct) {

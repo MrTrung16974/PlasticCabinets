@@ -74,10 +74,15 @@ $(document).ready(function () {
             success: function(data) {
                 console.log(data);
                 window.location.reload();
-                toastr.success('Tạo mới sản phẩm thành công ', 'Haha!');
+                if (data == 0) {
+                    toastr.success('Upload product thành công ', 'Haha!');
+                }
+                if (data == 4) {
+                    toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
+                }
             },
             error: function () {
-                toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
+                alert("Lỗi hệ thống vui lòng quay lại sau");
             }
         });
     });
@@ -85,7 +90,7 @@ $(document).ready(function () {
     $("#btnSaveProductChange").on('click', function () {
         console.log("OK");
         let idProduct = $("#editProductId").val();
-        let product = {
+        let updateProduct = {
             name:$("#editProductName").val().trim(),
             description:$("#editProductDescription").val().trim(),
             imgProduct: $("#newImageProduct1").attr('src'),
@@ -94,19 +99,24 @@ $(document).ready(function () {
             promotion:$("#editProductPromotion").val(),
             star: $("#editProductStar").val()
         };
-        console.log(product);
+        console.log(updateProduct);
         $.ajax({
             type: "POST",
             url: "http://localhost:8080/product/edit/" + idProduct,
-            data: JSON.stringify(product),
+            data: JSON.stringify(updateProduct),
             contentType: 'application/json',
             success: function(data) {
                 console.log(data);
                 window.location.reload();
-                toastr.success('Upload thành công ', 'Haha!');
+                if (data == 0) {
+                    toastr.success('Upload product thành công ', 'Haha!');
+                }
+                if (data == 4) {
+                    toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
+                }
             },
             error: function () {
-                toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
+                alert("Lỗi hệ thống vui lòng quay lại sau");
             }
         });
     });
@@ -131,10 +141,15 @@ $(document).ready(function () {
     //         success: function(data) {
     //             console.log(data);
     //             window.location.reload();
-    //             toastr.success('Upload thành công ', 'Haha!');
+    //             if (data == 0) {
+    //                 toastr.success('Upload product thành công ', 'Haha!');
+    //             }
+    //             if (data == 4) {
+    //                 toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
+    //             }
     //         },
     //         error: function () {
-    //             toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
+    //             alert("Lỗi hệ thống vui lòng quay lại sau");
     //         }
     //     });
     // });
