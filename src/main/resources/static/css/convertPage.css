@@ -67,3 +67,27 @@
 input.productImage.createProduct {
      border: none;
  }
+div.btn-save {
+    border: none;
+}
+span.promotion {
+    position: absolute;
+    top: -14px;
+    right: -7px;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+}
+
+.image-info {
+    width: 100%;
+    position: relative;
+}
+
+.product {
+    width: 31%;
+}

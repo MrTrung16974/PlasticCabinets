@@ -22,6 +22,30 @@ create table users(
 );
 
 -- create table product
+create table love_product(
+	id int(6) unsigned primary key not null AUTO_INCREMENT,
+    user_id int(6) unsigned not null,
+	product_id int(6) unsigned not null,
+    id_img int(6) unsigned null,
+    created_date datetime null,
+    modified_date datetime null,
+    create_by int(6) unsigned not null
+);
+
+-- create table product
+create table cast_product(
+	id int(6) unsigned primary key not null AUTO_INCREMENT,
+	user_id int(6) unsigned not null,
+    status int(6) not null,
+    description text null,
+	product_id int(6) unsigned not null,
+    id_img int(6) unsigned null,
+    created_date datetime null,
+    modified_date datetime null,
+    create_by int(6) unsigned not null
+);
+
+-- create table product
 create table products(
 	id int(6) unsigned primary key not null AUTO_INCREMENT,
     name nvarchar(250) not null,
@@ -38,6 +62,9 @@ create table products(
     modified_date datetime null,
     create_by int(6) unsigned not null
 );
+
+
+
 
 -- create table product
 create table categorys(

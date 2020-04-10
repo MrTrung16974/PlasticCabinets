@@ -6,14 +6,14 @@
             <input type="text" class="form-control" id="productName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">
         </div>
         <div class="modal-footer btn-save">
-            <button type="button" id="btnSaveProductDelete" class="btn btn-primary btn-save"
+            <button type="button" id="btnSearchProductDelete" class="btn btn-primary btn-save"
             >Search</button>
         </div>
         <div th:each="product : ${lstProduct}" class="product">
             <input type="hidden" id="deleteProductId"
                    th:value="${product.getId()}">
             <div class="image-info">
-                <img width="100" height="100" th:src="@{${product.getImgProduct()}}" id="imageProduct" alt="">
+                <img width="100%" height="200" th:src="@{${product.getImgProduct()}}" id="imageProduct" alt="">
                 <span class="promotion" th:text="${product.getPromotion()}"></span>
             </div>
             <div class="info-product">
@@ -28,8 +28,8 @@
                 </div>
             </div>
             <div class="manipulation">
-                <a  th:href="@{${'/delete/' + product.getId()}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                <a  id="Productdetail" th:href="@{${'/product/edit/' + product.getId()} + '/detail'}"  class="btn btn-danger"><i class="fas fa-edit"></i></a>
+                <a  th:href="@{${'/product/delete-product/' + product.getId()}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                <a  id="Productdetail" th:href="@{${'/product/edit-product/' + product.getId()} + '/detail'}"  class="btn btn-danger"><i class="fas fa-edit"></i></a>
             </div>
         </div>
     </div>
@@ -37,13 +37,34 @@
 
     <!-- Start ./ deleteUser-->
     <div th:fragment="deleteUser" id="deleteUser" class="convert-page">
-        <div class="form-group">deleteUser
+        <div class="form-group">
             <label for="userName">Name :</label>
             <input type="text" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">
         </div>
         <div class="modal-footer btn-save">
-            <button type="button" id="btnSaveUserDelete" class="btn btn-primary"
-            >Delete</button>
+            <button type="button" id="btnSearchUserDelete" class="btn btn-primary btn-save"
+            >Search</button>
+        </div>
+        <div th:each="user : ${allUser}" class="product">
+            <input type="hidden" id="deleteProductId"
+                   th:value="${user.getId()}">
+            <div class="image-info">
+                <img width="100" height="100" th:src="@{${user.getUserFace()}}" id="userFace" alt="">
+            </div>
+            <div class="info-product">
+                <p th:text="${user.getName()}"></p>
+                <p th:text="${user.getAccount()}"></p>
+                <p th:text="${user.getAccountBank()}"></p>
+                <p th:text="${user.getAddress()}"></p>
+                <p th:text="${user.getEmail()}"></p>
+                <p th:text="${user.getSex() == true ? 'Nam' : 'Nữ'}"></p>
+                <p th:text="${user.getBirthday()}"></p>
+                <p th:text="${user.getPhone()}"></p>
+            </div>
+            <div class="manipulation">
+                <a  th:href="@{${'/product/delete-user/' + user.getId()}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                <a  id="Productdetail" th:href="@{${'/product/edit-user/' + user.getId()} + '/detail'}"  class="btn btn-danger"><i class="fas fa-edit"></i></a>
+            </div>
         </div>
     </div>
     <!--End ./ deleteUser-->

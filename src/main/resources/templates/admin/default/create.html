@@ -64,21 +64,44 @@
             <input type="text" class="form-control" id="createUserName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">
         </div>
         <div class="form-group">
-            <label for="createUserDescription">Description :</label>
-            <input type="text" class="form-control" id="createUserDescription" aria-describedby="emailHelp" placeholder="Nhập mô tả của sản phẩm">
+            <label for="createUserAccount">Account :</label>
+            <input type="email" class="form-control" id="createUserAccount" aria-describedby="emailHelp" placeholder="Nhập tài khoản của người dùng">
         </div>
         <div class="form-group">
-            <label for="createUserPrice">Price :</label>
-            <input type="number" class="form-control" id="createUserPrice" aria-describedby="emailHelp" placeholder="Nhập giá tiền của sản phẩm">
+            <label for="createUserPassword">Password :</label>
+            <input type="password" class="form-control" id="createUserPassword" aria-describedby="emailHelp" placeholder="Nhập giá mật khẩu của người dùng">
         </div>
         <div class="form-group">
-            <label for="createUserStar">Star :</label>
-            <input type="number" class="form-control" id="createUserStar" aria-describedby="emailHelp" placeholder="Nhập đánh giả của sản phẩm từ 1 - 5">
+            <label for="createUserAccountBank">Account Bank :</label>
+            <input type="text" class="form-control" id="createUserAccountBank" aria-describedby="emailHelp" placeholder="Nhập tài khoản ngây hàng của người dùng">
+        </div>
+        <div class="form-group">
+            <label for="createUserAddress">Address:</label>
+            <input type="text" class="form-control" id="createUserAddress" aria-describedby="emailHelp" placeholder="Nhập địa chỉ của người dùng">
         </div>
         <div class="form-group" style="border: none">
-            <label for="createUserImage">Image :</label>
-            <input type="file" name="file" class="form-control productImage" id="createUserImage" aria-describedby="emailHelp">
-            <img id="newImageProduct" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
+            <label for="createUserFace">User Face :</label>
+            <input type="file" name="file" class="form-control productImage  createProduct" id="createUserFace" aria-describedby="emailHelp">
+            <img id="UserFace" class="newImageProduct" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
+        </div>
+        <div class="form-group">
+            <label for="createUserEmail">Email :</label>
+            <input type="email" class="form-control" id="createUserEmail" aria-describedby="emailHelp" placeholder="Nhập email của người dùng">
+        </div>
+        <div class="form-group">
+            <div>Sex :</div>
+            <label for="createUserSexMale">Male : </label>
+            <input type="radio" name="createUserSex" id="createUserSexMale" value="true" aria-describedby="emailHelp">
+            <label for="createUserSexFemale">Female :</label>
+            <input type="radio" name="createUserSex" id="createUserSexFemale" value="false" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="createUserBirthday">Birthday :</label>
+            <input type="date" class="form-control" id="createUserBirthday" aria-describedby="emailHelp" placeholder="Nhập ngày sinh của người dùng">
+        </div>
+        <div class="form-group">
+            <label for="createUserPhone">Phone :</label>
+            <input type="number" class="form-control" id="createUserPhone" aria-describedby="emailHelp" placeholder="Nhập số điện thoại của người dùng">
         </div>
         <div class="modal-footer btn-save">
             <button type="button" id="btnSaveUserCreate" class="btn btn-primary"

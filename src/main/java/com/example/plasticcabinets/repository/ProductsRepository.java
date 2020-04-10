@@ -16,4 +16,7 @@ public interface ProductsRepository extends JpaRepository<Products, Integer> {
     //    @Transactional
     @Query(value = "SELECT * from products p WHERE p.name LIKE %:name%", nativeQuery = true)
     List<Products> searchProduct(@Param("name") String name);
+
+    @Query(value = "SELECT * from products p WHERE p.star >= :star", nativeQuery = true)
+    List<Products> goodProduct(@Param("star") Integer star);
 }

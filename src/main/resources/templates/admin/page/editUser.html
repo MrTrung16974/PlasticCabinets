@@ -38,26 +38,50 @@
         <!-- start ./ content -->
         <!-- Start ./ editUser-->
         <div  id="editUser" class="convert-page">
+            <input type="hidden" id="UserSex" th:value="${user.getSex()}">
             <div class="form-group">
-                <label for="editUserName">Name :</label>
-                <input type="text" class="form-control" id="editUserName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">
+                <label for="createUserName">Name :</label>
+                <input type="text" class="form-control" th:value="${user.getName()}" id="createUserName" aria-describedby="emailHelp" placeholder="Nhập tên của sản phẩm">
             </div>
             <div class="form-group">
-                <label for="editUserDescription">Description :</label>
-                <input type="text" class="form-control" id="editUserDescription" aria-describedby="emailHelp" placeholder="Nhập mô tả của sản phẩm">
+                <label for="createUserAccount">Account :</label>
+                <input type="email" class="form-control" th:value="${user.getAccount()}" id="createUserAccount" aria-describedby="emailHelp" placeholder="Nhập tài khoản của người dùng">
             </div>
             <div class="form-group">
-                <label for="editUserPrice">Price :</label>
-                <input type="number" class="form-control" id="editUserPrice" aria-describedby="emailHelp" placeholder="Nhập giá tiền của sản phẩm">
+                <label for="createUserPassword">Password :</label>
+                <input type="password" class="form-control" th:value="${user.getPassword()}" id="createUserPassword" aria-describedby="emailHelp" placeholder="Nhập giá mật khẩu của người dùng">
             </div>
             <div class="form-group">
-                <label for="editUserStar">Star :</label>
-                <input type="number" class="form-control" id="editUserStar" aria-describedby="emailHelp" placeholder="Nhập đánh giả của sản phẩm từ 1 - 5">
+                <label for="createUserAccountBank">Account Bank :</label>
+                <input type="text" class="form-control" th:value="${user.getAccountBank()}" id="createUserAccountBank" aria-describedby="emailHelp" placeholder="Nhập tài khoản ngây hàng của người dùng">
+            </div>
+            <div class="form-group">
+                <label for="createUserAddress">Address:</label>
+                <input type="text" class="form-control" th:value="${user.getAddress()}" id="createUserAddress" aria-describedby="emailHelp" placeholder="Nhập địa chỉ của người dùng">
             </div>
             <div class="form-group" style="border: none">
-                <label for="userImage">Image :</label>
-                <input type="file" name="file" class="form-control productImage" id="userImage" aria-describedby="emailHelp">
-                <img id="newImageUser" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
+                <label for="createUserFace">User Face :</label>
+                <input type="file" name="file" class="form-control productImage createProduct" id="createUserFace" aria-describedby="emailHelp">
+                <img id="UserFace" th:src="@{${user.getUserFace()}}" style="border: none;margin-top: 15px;" width="200" height="200"  alt="">
+            </div>
+            <div class="form-group">
+                <label for="createUserEmail">Email :</label>
+                <input type="email" class="form-control" th:value="${user.getEmail()}" id="createUserEmail"  aria-describedby="emailHelp" placeholder="Nhập email của người dùng">
+            </div>
+            <div class="form-group">
+                <div>Sex :</div>
+                <label for="createUserSexMale">Male : </label>
+                <input type="radio" name="createUserSex" id="createUserSexMale" value="true" aria-describedby="emailHelp">
+                <label for="createUserSexFemale">Female :</label>
+                <input type="radio" name="createUserSex" id="createUserSexFemale" value="false" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="createUserBirthday">Birthday :</label>
+                <input type="date" class="form-control" th:value="${date}" id="createUserBirthday" aria-describedby="emailHelp" placeholder="Nhập ngày sinh của người dùng">
+            </div>
+            <div class="form-group">
+                <label for="createUserPhone">Phone :</label>
+                <input type="number" class="form-control" th:value="${user.getPhone()}" id="createUserPhone" aria-describedby="emailHelp" placeholder="Nhập số điện thoại của người dùng">
             </div>
             <div class="modal-footer btn-save">
                 <button type="button" id="btnSaveUserEdit" class="btn btn-primary"
@@ -77,13 +101,9 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script th:src="@{/js/script.js}" type="text/javascript "></script>
-    <script th:src="@{/js/convertPage.js}" type="text/javascript"></script>
-    <script th:src="@{/js/ajaxData.js}" type="text/javascript"></script>
+    <div th:replace="/admin/default/footer :: javascript"> </div>
+
+
 </body>
 
 </html>

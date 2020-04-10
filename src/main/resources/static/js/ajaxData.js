@@ -38,7 +38,7 @@ $(document).ready(function () {
         console.log(imgProduct);
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/product/img_product",
+            url: "http://localhost:8080/product/image-product",
             data: JSON.stringify(imgProduct),
             contentType: 'application/json',
             success: function (data) {
@@ -68,7 +68,7 @@ $(document).ready(function () {
         console.log(product);
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/product/create",
+            url: "http://localhost:8080/product/create-product",
             data: JSON.stringify(product),
             contentType: 'application/json',
             success: function(data) {
@@ -102,7 +102,7 @@ $(document).ready(function () {
         console.log(updateProduct);
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/product/edit/" + idProduct,
+            url: "http://localhost:8080/product/edit-product/" + idProduct,
             data: JSON.stringify(updateProduct),
             contentType: 'application/json',
             success: function(data) {
@@ -135,7 +135,7 @@ $(document).ready(function () {
     //     console.log(imgProduct);
     //     $.ajax({
     //         type: "POST",
-    //         url: "http://localhost:8080/product/image-edit/" + idProduct,
+    //         url: "http://localhost:8080/product/image-edit-product/" + idProduct,
     //         data: JSON.stringify(imgProduct),
     //         contentType: 'application/json',
     //         success: function(data) {
