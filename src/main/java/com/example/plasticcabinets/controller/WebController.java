@@ -1,5 +1,6 @@
 package com.example.plasticcabinets.controller;
 
+import com.example.plasticcabinets.model.CastProduct;
 import com.example.plasticcabinets.model.Products;
 import com.example.plasticcabinets.repository.ImageProductRepository;
 import com.example.plasticcabinets.repository.ProductsRepository;
@@ -11,10 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Controller
+@RequestMapping("/product")
 public class WebController {
     @Autowired
     ProductsRepository productsRepository;
@@ -69,8 +70,25 @@ public class WebController {
         return "web/index";
     }
 
-    @RequestMapping("/pageHome")
-    public String detail(Model model) {
-        return "web/page/home";
+    @RequestMapping("/pageDetail")
+    public String detail() {
+        return "web/page/detail";
+    }
+
+    @RequestMapping("/pageSearch")
+    public String search() {
+        return "web/page/searchProduct";
+    }
+
+    @RequestMapping("/pageHeader")
+    public String search(Model model) {
+        Set<CastProduct> lstCastProduct = new HashSet<>();
+        for(CastProduct cast : mockData.getAllCastProduct()) {
+            if(cast.getCreateBy() == 1) {
+                lstCastProduct.add(cast);
+            }
+        }
+        model.addAttribute("lengthProduct", lstCastProduct.size());
+        return "web/default/header";
     }
 }

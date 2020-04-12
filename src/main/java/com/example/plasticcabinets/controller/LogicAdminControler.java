@@ -71,6 +71,36 @@ public class LogicAdminControler {
         return "admin/page/editProduct";
     }
 
+    //    create image product
+    @PostMapping(value = "/image-product")
+    @ResponseBody
+    public int createImgProduct(@RequestBody ImageProduct imgProduct) {
+        if(imgProduct.getImgProduct1() != null) {
+            imgProduct.setCreateBy(1);
+            imageProductRepository.save(imgProduct);
+        }else {
+            return 1;
+        }
+        return 0;
+
+    }
+
+    //    create product
+    @PostMapping(value = "/create-product")
+    @ResponseBody
+    public int createProduct(@RequestBody Products product) {
+        if(product.getName() != null && product.getDescription() != null) {
+            product.setUserId(1);
+            product.setIdImg(1);
+            product.setCreateBy(1);
+            productsRepository.save(product);
+        }else {
+            return 4;
+        }
+        return 0;
+
+    }
+
 //    Edit product
     @PostMapping("/edit-product/{id}")
     @ResponseBody
@@ -86,6 +116,7 @@ public class LogicAdminControler {
             productModel.setOldPrice(product.getOldPrice());
             productModel.setPromotion(product.getPromotion());
             productModel.setStar(product.getStar());
+            productModel.setCategoryId(product.getCategoryId());
             Products newproducts = productsRepository.save(productModel);
         } else {
             return 4;
@@ -109,37 +140,6 @@ public class LogicAdminControler {
             return 4;
         }
         return 0;
-    }
-
-//    create image product
-    @PostMapping(value = "/image-product")
-    @ResponseBody
-    public int createImgProduct(@RequestBody ImageProduct imgProduct) {
-        if(imgProduct.getImgProduct1() != null) {
-            imgProduct.setCreateBy(1);
-            imageProductRepository.save(imgProduct);
-        }else {
-            return 1;
-        }
-        return 0;
-
-    }
-
-//    create product
-    @PostMapping(value = "/create-product")
-    @ResponseBody
-    public int createProduct(@RequestBody Products product) {
-        if(product.getName() != null && product.getDescription() != null) {
-            product.setUserId(1);
-            product.setIdImg(1);
-            product.setCreateBy(1);
-            product.setCategoryId(1);
-            productsRepository.save(product);
-        }else {
-            return 4;
-        }
-        return 0;
-
     }
 
 //    delete product

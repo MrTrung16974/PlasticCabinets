@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="/web/default/header :: head"></div>
+
+<body>
+<!--Start ./ header-->
+<div th:replace="/web/default/header :: header"></div>
+<!--End ./ header-->
+
+<!-- Start ./ content -->
+<main class="content container">
+    <form class="login">
+        <label for="account">Tài khoản : </label>
+        <input type="email" id="account" name="account" placeholder="admin@gamil.com">
+        <label for="password">Mật khẩu : </label>
+        <input type="password" id="password" name="password" placeholder="********">
+        <button type="submit">Đăng Nhập</button>
+    </form>
+
+    <form style="display: none;" class="register">
+        <label for="name">Name : </label>
+        <input type="text" id="name" name="name" placeholder="Mời bản nhập tên!">
+        <label for="account">Tài khoản : </label>
+        <input type="email" id="account" name="account" placeholder="admin@gamil.com">
+        <label for="password">Mật khẩu : </label>
+        <input type="password" id="password" name="password" placeholder="********">
+        <label for="birthday">Ngày sinh : </label>
+        <input type="date" id="birthday" name="birthday" placeholder="admin@gamil.com">
+        <button type="submit">Đăng Nhập</button>
+        <button type="submit">Đăng ký</button>
+        <a href="#">Quyên mật khẩu</a>
+    </form>
+</main>
+<!-- End ./ content -->
+
+<!-- Start ./ footer -->
+<div th:replace="/web/default/footer :: footer"></div>
+<!-- End ./ footer -->
+<!-- start ./ messenger -->
+<div th:replace="/web/default/footer :: messenger"></div>
+<!-- end ./ messenger -->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script th:src="@{/js/scriptWeb.js}"></script>
+</body>
+
+</html>

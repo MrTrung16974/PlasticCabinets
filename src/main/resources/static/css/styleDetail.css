@@ -1,0 +1,152 @@
+main.content div.video div.like {
+    text-align: right;
+    color: blue;
+    cursor: pointer;
+    margin: 10px 0px;
+}
+
+main.content div.rental-block div.rental-info {
+    padding: 20px 10px;
+}
+main.content div.rental-block div.image-product {
+    position: relative;
+    overflow: hidden;
+}
+
+main.content div.rental-block div.image-product span.promotion {
+    position: absolute;
+    width: 150px;
+    height: 20px;
+    right: -50px;
+    top: 15px;
+    background-color: #007bff !important;
+    color: #fff;
+    font-size: 13px;
+    text-align: center !important;
+    transform: rotate(45deg);
+}
+
+main.content div.rental-block div.rental-info>p {
+    color: #EB7F02;
+    font-size: 20px;
+}
+main.content div.rental-block div.rental-info>p:nth-child(4) {
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    padding: 10px 12px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+main.content div.rental-block div.rental-info div.title {
+    font-size: 22px;
+}
+
+main.content div.rental-block div.rental-info div.rate,
+main.content div.content-wraper div.comment div.comment-info div.media div.media-body div.star
+{
+    font-size: 10px;
+    color: red;
+    margin: 10px 0px;
+}
+main.content div.rental-block div.rental-info div.rate>span {
+    font-size: 15px;
+}
+
+main.content div.rental-block div.rental-info div.rate>span:last-child {
+    border-left: 2px solid #ce9a9a;
+    margin-left: 5px;
+    padding: 0px 10px;
+}
+
+main.content div.rental-block div.rental-info div.rent {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+main.content div.rental-block div.rental-info div.rent>div {
+    padding: 12px 20px;
+    background-color: red;
+    font-size: 19px;
+    margin-right: 25px;
+    color: #fff;
+    border-radius: 5px;
+}
+main.content div.rental-block div.rental-info div.rent>div:hover {
+    background-color: #00f938;
+}
+
+main.content div.rental-block div.rental-info div.rent>div>a {
+    color: #fff;
+}
+
+main.content div.content-wraper div.details div.title-detail,
+main.content div.content-wraper div.description div.title-description,
+main.content div.content-wraper div.comment div.more-products>span
+{
+    padding: 10px 12px;
+    background-color: #f5f5f5;
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    color: #5a4546;
+    margin-top: 50px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+main.content div.content-wraper div div.product-info{
+    margin: 20px 30px;
+}
+
+main.content div.content-wraper div.details div.product-info div.col-xl-3>span {
+    color: #a99595;
+}
+
+main.content div.content-wraper div.details div.product-info div.col-12>span {
+    margin-top: 10px;
+    display: block;
+}
+
+main.content div.content-wraper div.comment {
+    margin-top: 40px;
+    border-top: 2px solid #ceb3b3;
+    padding-top: 20px;}
+
+main.content div.content-wraper div.comment div.status-upload form>textarea {
+    display: block;
+    width: 50%;
+    height: 120px;
+    border-radius: 10px;
+    padding: 20px;
+}
+main.content div.content-wraper div.comment div.status-upload form>button[type="submit"] {
+    margin-top: 10px;
+}
+main.content div.content-wraper div.comment div.comment-info div.media {
+    padding: 0px 20px;
+}
+main.content div.content-wraper div.comment div.comment-info div.media div.media-body>p {
+    margin-left: 60px;
+    color: #867070;
+}
+main.content div.content-wraper div.comment div.comment-info div.media div.media-body>p:last-child {
+    color: red;
+    cursor: pointer;
+}
+main.content div.content-wraper div.comment div.comment-info div.media div.media-body div.star {
+    position: relative;
+    left: 60px;
+    top: -15px;
+}
+
+main.content div.content-wraper div.list-similar-product {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    grid-template-rows: 1fr 1fr;
+}
+

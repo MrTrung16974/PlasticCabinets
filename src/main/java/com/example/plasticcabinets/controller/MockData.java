@@ -1,8 +1,10 @@
 package com.example.plasticcabinets.controller;
 
+import com.example.plasticcabinets.model.CastProduct;
 import com.example.plasticcabinets.model.ImageProduct;
 import com.example.plasticcabinets.model.Products;
 import com.example.plasticcabinets.model.Users;
+import com.example.plasticcabinets.repository.CastProductRepository;
 import com.example.plasticcabinets.repository.ImageProductRepository;
 import com.example.plasticcabinets.repository.ProductsRepository;
 import com.example.plasticcabinets.repository.UserRepository;
@@ -20,6 +22,7 @@ public class MockData {
     protected List<Products> allGoodProduct = new ArrayList<>();
     protected List<Users> allUser = new ArrayList<>();
     protected List<ImageProduct> allImageProduct = new ArrayList<>();
+    protected List<CastProduct> allCastProduct = new ArrayList<>();
 
     @Autowired
     ProductsRepository productsRepository;
@@ -31,6 +34,9 @@ public class MockData {
     ImageProductRepository imageProductRepository;
 
     @Autowired
+    CastProductRepository castProductRepository;
+
+    @Autowired
     StoreFileService storeFileService;
 
     @Autowired
@@ -39,6 +45,7 @@ public class MockData {
     @PostConstruct
     public void mockData() {
         allProduct = productsRepository.findAll();
+        allCastProduct = castProductRepository.findAll();
         allImageProduct = imageProductRepository.findAll();
         allGoodProduct = productsRepository.goodProduct(4);
         allUser = userRepository.findAll();
@@ -50,6 +57,14 @@ public class MockData {
 
     public void setAllProduct(List<Products> allProduct) {
         this.allProduct = allProduct;
+    }
+
+    public List<Products> getAllGoodProduct() {
+        return allGoodProduct;
+    }
+
+    public void setAllGoodProduct(List<Products> allGoodProduct) {
+        this.allGoodProduct = allGoodProduct;
     }
 
     public List<Users> getAllUser() {
@@ -68,11 +83,11 @@ public class MockData {
         this.allImageProduct = allImageProduct;
     }
 
-    public List<Products> getAllGoodProduct() {
-        return allGoodProduct;
+    public List<CastProduct> getAllCastProduct() {
+        return allCastProduct;
     }
 
-    public void setAllGoodProduct(List<Products> allGoodProduct) {
-        this.allGoodProduct = allGoodProduct;
+    public void setAllCastProduct(List<CastProduct> allCastProduct) {
+        this.allCastProduct = allCastProduct;
     }
 }

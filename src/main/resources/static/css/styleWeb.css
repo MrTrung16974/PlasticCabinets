@@ -27,6 +27,14 @@ body {
         gap: 20px;
         grid-template-rows: 1fr 1fr 1fr !important;
     }
+    main.content div.content-wraper div.list-similar-product {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 20px;
+        padding: 20px;
+        grid-template-rows: 1fr 1fr;
+    }
 }
 
 @media all and (min-width: 577px) and (max-width: 992px) {
@@ -39,6 +47,16 @@ body {
         gap: 20px;
         grid-template-rows: 1fr 1fr 1fr !important;
     }
+
+    main.content div.content-wraper div.list-similar-product {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 20px;
+        padding: 20px;
+        grid-template-rows: 1fr 1fr;
+    }
+
 }
 
 @media all and (min-width: 993px) and (max-width: 1200px) {}
@@ -62,7 +80,9 @@ body {
 .active {
     background-color: rgb(233, 236, 239);
 }
-
+a:hover {
+    text-decoration: none !important;
+}
 
 /* end ./ add css */
 
@@ -181,11 +201,6 @@ header.header div.top-menu div.search button.btn-search {
     font-size: 13px;
     border-radius: 3px;
 }
-
-header.header div.slide {
-    margin-top: 1px;
-}
-
 header.header p.title {
     margin-top: 50px;
 }
@@ -196,7 +211,11 @@ header.header p.title {
 
 /* start ./ content */
 
-main.content {
+main.content div.slide {
+    margin-top: 1px;
+}
+
+main.content div.all-content{
     box-shadow: 0px 8px 16px #8e7979;
     border-radius: 3px;
     background-color: #f5f5f5;
@@ -238,6 +257,7 @@ main.content div.list-product {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
+    padding: 20px;
     grid-template-rows: 1fr 1fr 1fr;
 }
 

@@ -38,6 +38,7 @@ create table cast_product(
 	user_id int(6) unsigned not null,
     status int(6) not null,
     description text null,
+    the_number int(6) unsigned not null,
 	product_id int(6) unsigned not null,
     id_img int(6) unsigned null,
     created_date datetime null,
@@ -62,9 +63,6 @@ create table products(
     modified_date datetime null,
     create_by int(6) unsigned not null
 );
-
-
-
 
 -- create table product
 create table categorys(
@@ -121,6 +119,7 @@ create table comments(
 	id int(6) unsigned primary key not null AUTO_INCREMENT,
     title nvarchar(200) not null,
     comment text not null,
+    star int(1) unsigned null,
     user_id int(6) not null,
     status long null,
     created_date datetime not null,

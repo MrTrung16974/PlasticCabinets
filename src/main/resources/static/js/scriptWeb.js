@@ -8,5 +8,31 @@ $(document).ready(function() {
     //     }
 
     // });
+    $('#keywordSearch').on('keypress', function (e) {
+        if (e.keyCode == 13) {
+            let keyword = $("#keywordSearch").val().trim();
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/product/search?keyword="+ keyword,
+                processData: false,
+                contentType: 'application/json',
+                success : function () {
+                    window.location.href = "http://localhost:8080/product/search?keyword="+ keyword;
+                }
+            });
+        }
+    });
+    $("#searchProduct").on('click', function () {
+        let keyword = $("#keywordSearch").val().trim();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/product/search?keyword="+ keyword,
+            processData: false,
+            contentType: 'application/json',
+            success : function () {
+                window.location.href = "http://localhost:8080/product/search?keyword="+ keyword;
+            }
+        });
+    });
 
 });

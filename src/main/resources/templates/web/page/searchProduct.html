@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="/web/default/header :: head"></div>
+
+<body>
+<!--Start ./ header-->
+<div th:replace="/web/default/header :: header"></div>
+<!--End ./ header-->
+
+<!-- Start ./ content -->
+<main class="content container">
+    <div class="all-content">
+        <div class="product-null">
+            <p th:text="${mess != null ? mess : ''}"></p>
+        </div>
+        <div class="list-product">
+            <div th:each="product : ${lstSimilarProduct}" class="card">
+                <img th:src="@{${product.getImgProduct()}}" height="140" class="card-img-top rounded" alt="...">
+                <div th:text="${product.getPromotion() + ' %'}" class="sale">54%</div>
+                <div class="card-body">
+                    <a th:href="@{${'/product/detail/' + product.getId()}}" th:text="${product.getName()}" class="card-title">Tủ trẻ em</a>
+                    <p th:text="${product.getDescription()}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p  class="card-money"><s th:text="${#numbers.formatDecimal(product.getOldPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'">99.000 VND</s></p>
+                    <p style="font-size: 20px;font-weight: 700;" th:text="${#numbers.formatDecimal(product.getNewPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'" class="card-money">99.000 VND</p>
+                    <a th:href="@{${'/product/cast/' + product.getId()}}" class="btn btn-light"><i class="fas fa-cart-plus"></i></a>
+                    <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
+                    <div class="star">
+                        <i th:each="i : ${#numbers.sequence(1,5)}"
+                           th:class="${product.getStar() >= i ? 'fas fa-star' : 'far fa-star'}"></i>
+                    </div>
+                    <p class="card-text">Đã bán 2,4k</p>
+                </div>
+            </div>
+        </div>
+        <div class="pagination" >
+            <a th:each="i : ${#numbers.sequence(0, totalPage)}"
+               th:class="${currentPage == i} ? 'active' : 'inactive'"
+               th:href="@{'search?Page=' + ${i}}" th:text="${i+1}">
+            </a>
+            <span>...</span>
+            <a style="width: 40px;" th:href="@{'webHome?Page=' + ${currentPage >= totalPage ? currentPage : currentPage+1}}">Next</a>
+        </div>
+    </div>
+</main>
+<!-- End ./ content -->
+
+<!-- Start ./ footer -->
+<div th:replace="/web/default/footer :: footer"></div>
+<!-- End ./ footer -->
+<!-- start ./ messenger -->
+<div th:replace="/web/default/footer :: messenger"></div>
+<!-- end ./ messenger -->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script th:src="@{/js/scriptWeb.js}"></script>
+</body>
+
+</html>

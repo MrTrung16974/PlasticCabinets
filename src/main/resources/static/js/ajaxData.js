@@ -63,7 +63,8 @@ $(document).ready(function () {
             newPrice:$("#createProductNewPrice").val().trim(),
             oldPrice:$("#createProductOldPrice").val().trim(),
             promotion:$("#createProductPromotion").val(),
-            star: $("#createProductStar").val()
+            star: $("#createProductStar").val(),
+            category_id: $().val("#createProductType")
         };
         console.log(product);
         $.ajax({
@@ -97,7 +98,8 @@ $(document).ready(function () {
             newPrice:$("#editProductNewPrice").val().trim(),
             oldPrice:$("#editProductOldPrice").val().trim(),
             promotion:$("#editProductPromotion").val(),
-            star: $("#editProductStar").val()
+            star: $("#editProductStar").val(),
+            category_id: $("#editProductType").val()
         };
         console.log(updateProduct);
         $.ajax({

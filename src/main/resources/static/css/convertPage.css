@@ -91,3 +91,9 @@ span.promotion {
 .product {
     width: 31%;
 }
+select.product-type {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 100%;
+}
