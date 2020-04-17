@@ -92,7 +92,7 @@
     div.full-width div.left-content div.menu>ul li>ul {
         display: none;
         background: #f8f9fc;
-        border-radius: 10px;
+        border-radius: 5px;
         font-size: 14px;
         margin-top: 10px;
         padding: 10px 0;

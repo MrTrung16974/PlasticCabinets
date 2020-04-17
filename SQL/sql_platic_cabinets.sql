@@ -21,7 +21,7 @@ create table users(
     createby int(6) unsigned not null
 );
 
--- create table product
+-- create table love product
 create table love_product(
 	id int(6) unsigned primary key not null AUTO_INCREMENT,
     user_id int(6) unsigned not null,

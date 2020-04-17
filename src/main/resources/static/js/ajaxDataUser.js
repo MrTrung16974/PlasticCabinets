@@ -1,6 +1,5 @@
 $(document).ready(function () {
     let userSex = $("#UserSex").val();
-    console.log(userSex);
     if(userSex == 'true') {
         $("#createUserSexMale").attr("checked", "checkedchecked");
     }else {

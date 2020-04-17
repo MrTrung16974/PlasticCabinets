@@ -17,6 +17,9 @@ import java.util.*;
 @Controller
 @RequestMapping("/product")
 public class WebController {
+    private List<Products> productOfPage = new ArrayList<>();
+    private List<Products> goodProductOfPage = new ArrayList<>();
+
     @Autowired
     ProductsRepository productsRepository;
 
@@ -30,65 +33,82 @@ public class WebController {
     MockData mockData;
 
     @RequestMapping("/webHome")
-    public String home(Model model, @RequestParam(value = "Page", defaultValue = "0") int page, @RequestParam(value = "PageGood", defaultValue = "0") int pageGood){
-        List<Products> productOfPage = new ArrayList<>();
-        List<Products> goodProductOfPage = new ArrayList<>();
-
+    public String home(Model model,@RequestParam(value = "hot", defaultValue = "1") int hot, @RequestParam(value = "type", defaultValue = "1") int type, @RequestParam(value = "Page",
+            defaultValue = "0") int page, @RequestParam(value = "PageGood", defaultValue = "0") int pageGood){
         int index = page * Constant.PAGE_SIZE;
         int lengthProduct = page * Constant.PAGE_SIZE + Constant.PAGE_SIZE >  mockData.getAllProduct().size() ?  mockData.getAllProduct().size() :
                 page * Constant.PAGE_SIZE + Constant.PAGE_SIZE;
 
+        productOfPage.clear();
         for(int i = index; i< lengthProduct; i++) {
             Products product =  mockData.getAllProduct().get(i);
-            productOfPage.add(product);
+            if(type == product.getCategoryId()) {
+                productOfPage.add(product);
+            }
         }
         int totalPage =  mockData.getAllProduct().size() % Constant.PAGE_SIZE != 0
                 ? ( mockData.getAllProduct().size()/Constant.PAGE_SIZE )
                 : ( mockData.getAllProduct().size()/Constant.PAGE_SIZE -1);
 
         int indexGood = pageGood * Constant.PAGE_GOOD_SIZE;
-        int lengthProductGood =  pageGood * Constant.PAGE_GOOD_SIZE + Constant.PAGE_GOOD_SIZE > mockData.getAllGoodProduct().size() ? mockData.getAllGoodProduct().size() :
-                pageGood * Constant.PAGE_GOOD_SIZE + Constant.PAGE_GOOD_SIZE;
+        int lengthProductGood =  pageGood * Constant.PAGE_GOOD_SIZE + Constant.PAGE_GOOD_SIZE > mockData.getAllGoodProduct().size() ?
+                mockData.getAllGoodProduct().size() :pageGood * Constant.PAGE_GOOD_SIZE + Constant.PAGE_GOOD_SIZE;
+        goodProductOfPage.clear();
         for (int i = indexGood; i < lengthProductGood; i++) {
             Products product = mockData.getAllGoodProduct().get(i);
-            goodProductOfPage.add(product);
+            switch (hot) {
+                case 1:
+                    goodProductOfPage.add(product);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.out.println("ERROR!");
+                    break;
+            }
         }
 
         int totalGoodPage = mockData.getAllGoodProduct().size() % Constant.PAGE_GOOD_SIZE != 0
                 ? (mockData.getAllGoodProduct().size()/Constant.PAGE_GOOD_SIZE )
                 : (mockData.getAllGoodProduct().size()/Constant.PAGE_GOOD_SIZE -1);
 
+
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("currentPage", page);
         model.addAttribute("currentGoodPage", pageGood);
         model.addAttribute("totalGoodPage", totalGoodPage);
-        model.addAttribute("listGame", productOfPage);
+        model.addAttribute("productOfPage", productOfPage);
         model.addAttribute("goodLstGame", goodProductOfPage);
 
         model.addAttribute("lstProduct", mockData.getAllProduct());
         model.addAttribute("allImageProduct", mockData.getAllImageProduct());
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "web/index";
     }
 
     @RequestMapping("/pageDetail")
-    public String detail() {
+    public String Detail(Model model) {
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "web/page/detail";
     }
 
     @RequestMapping("/pageSearch")
-    public String search() {
+    public String Search(Model model) {
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "web/page/searchProduct";
     }
 
     @RequestMapping("/pageHeader")
-    public String search(Model model) {
-        Set<CastProduct> lstCastProduct = new HashSet<>();
-        for(CastProduct cast : mockData.getAllCastProduct()) {
-            if(cast.getCreateBy() == 1) {
-                lstCastProduct.add(cast);
-            }
-        }
-        model.addAttribute("lengthProduct", lstCastProduct.size());
+    public String Header(Model model) {
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "web/default/header";
+    }
+
+    @RequestMapping("/pageCast")
+    public String Cast(Model model) {
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
+        return "web/page/cast";
     }
 }

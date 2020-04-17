@@ -25,6 +25,9 @@ import java.util.*;
 public class LogicWebController {
     private Levenshtein leven = new Levenshtein();
     private Set<Products> lstSimilarProduct = new HashSet<>();
+    private Set<Products> lstCast = new HashSet<>();
+    private List<Products> lstCastProduct = new ArrayList<>();
+
     @Autowired
     ProductsRepository productsRepository;
 
@@ -51,7 +54,7 @@ public class LogicWebController {
     public String productDetail(@PathVariable("id") Integer idProduct, Model model) {
         Products product = null;
         ImageProduct imageProduct = null;
-
+        String productType = null;
         for (Products p : mockData.getAllProduct()) {
             if(p.getId() == idProduct) {
                 product = p;
@@ -64,13 +67,45 @@ public class LogicWebController {
         }
         lstSimilarProduct.clear();
         for (Products p : mockData.getAllProduct()) {
-            if(leven.distance(p.getName(), product.getName()) < 6.0 && lstSimilarProduct.size() <= 8) {
+            if(leven.distance(p.getName(), product.getName()) < 7.0 && lstSimilarProduct.size() <= 8) {
                 lstSimilarProduct.add(p);
             }
         }
+        switch (product.getCategoryId()) {
+            case 1:
+                productType = "Tủ trẻ em";
+                break;
+            case 2:
+                productType = "Tủ quần áo";
+                break;
+            case 3:
+                productType = "Tủ đài loan cách sơn";
+                break;
+            case 4:
+                productType = "Tủ quần áo hàn quốc";
+                break;
+            case 5:
+                productType = "Bàn học";
+                break;
+            case 6:
+                productType = "Tủ giày";
+                break;
+            case 7:
+                productType = "Giường và tủ bếp";
+                break;
+            case 8:
+                productType = "Kệ tivi";
+                break;
+            default:
+                productType = "";
+                break;
+
+        }
+        model.addAttribute("productType", productType);
         model.addAttribute("product", product);
         model.addAttribute("imageProduct", imageProduct);
         model.addAttribute("lstSimilarProduct", lstSimilarProduct);
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "web/page/detail";
     }
 
@@ -101,6 +136,7 @@ public class LogicWebController {
         model.addAttribute("lstSimilarProduct", lstPageProduct);
         model.addAttribute("mess", mess);
 //        model.addAttribute("lstImageProduct", lstImageProduct);
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "web/page/searchProduct";
     }
 
@@ -114,11 +150,45 @@ public class LogicWebController {
                 product = p;
             }
         }
-        castProduct = castProductRepository.findByCast(product.getId());
+//        castProduct = castProductRepository.findByCast(product.getId());
         castProductRepository.saveCastProduct(1, 1,
                 "Chờ chủ cửa hàng phê duyệt",1, product.getId(), product.getIdImg(), 1);
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "redirect:/product/webHome";
     }
 
+    @RequestMapping("/cast")
+    public String Cast(Model model, @RequestParam(value = "id", defaultValue = "0") int id, @RequestParam(value = "Page", defaultValue = "0") int page) {
+        lstCastProduct = productsRepository.getCastProduct();
+
+        String mess = null;
+        int index = page * Constant.PAGE_SIZE;
+        int lengthProduct = page * Constant.PAGE_SIZE + Constant.PAGE_SIZE >  lstCastProduct.size() ?   lstCastProduct.size() :
+                page * Constant.PAGE_SIZE + Constant.PAGE_SIZE;
+
+        if(lstCast != null) {
+            lstCast.clear();
+        }
+        for(int i = index; i< lengthProduct; i++) {
+            Products product =  lstCastProduct.get(i);
+            if(product.getCreateBy() == id) {
+                lstCast.add(product);
+            }
+        }
+        int totalPage = lstCastProduct.size() % Constant.PAGE_SIZE != 0 || lstCastProduct.size() % Constant.PAGE_SIZE == 0
+                ? ( lstCastProduct.size()/Constant.PAGE_SIZE )
+                : ( lstCastProduct.size()/Constant.PAGE_SIZE -1);
+
+        if(lstCast.isEmpty() && lstCast != null) {
+            mess = "Không có sản phẩm tồn tại!";
+        }
+
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("lstCast", lstCast);
+        model.addAttribute("mess", mess);
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
+        return "web/page/cast";
+    }
 
 }

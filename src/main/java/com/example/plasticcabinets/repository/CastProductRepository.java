@@ -19,6 +19,6 @@ public interface CastProductRepository extends JpaRepository<CastProduct, Intege
                                        @Param("description") String description, @Param("theNumber") Integer theNumber,  @Param("productId") Integer productId,
                                        @Param("idImg") Integer idImg, @Param("createBy") Integer createBy);
 
-    @Query(value = "select * from cast_product cast where cast.product_id = :productId")
-    public CastProduct findByCast(@Param("productId") Integer productId);
+//    @Query(value = "select * from cast_product cast where cast.product_id = :productId")
+//    public CastProduct findByCast(@Param("productId") Integer productId);
 }

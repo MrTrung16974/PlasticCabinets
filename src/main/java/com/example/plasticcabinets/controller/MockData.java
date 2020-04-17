@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class MockData {
@@ -23,6 +25,7 @@ public class MockData {
     protected List<Users> allUser = new ArrayList<>();
     protected List<ImageProduct> allImageProduct = new ArrayList<>();
     protected List<CastProduct> allCastProduct = new ArrayList<>();
+    protected Set<CastProduct> lstCastProduct = new HashSet<>();
 
     @Autowired
     ProductsRepository productsRepository;
@@ -47,8 +50,14 @@ public class MockData {
         allProduct = productsRepository.findAll();
         allCastProduct = castProductRepository.findAll();
         allImageProduct = imageProductRepository.findAll();
-        allGoodProduct = productsRepository.goodProduct(4);
         allUser = userRepository.findAll();
+        allGoodProduct = productsRepository.goodProduct(4);
+        for(CastProduct cast : allCastProduct) {
+            if(cast.getCreateBy() == 1) {
+                lstCastProduct.add(cast);
+            }
+        }
+
     }
 
     public List<Products> getAllProduct() {
@@ -89,5 +98,13 @@ public class MockData {
 
     public void setAllCastProduct(List<CastProduct> allCastProduct) {
         this.allCastProduct = allCastProduct;
+    }
+
+    public Set<CastProduct> getLstCastProduct() {
+        return lstCastProduct;
+    }
+
+    public void setLstCastProduct(Set<CastProduct> lstCastProduct) {
+        this.lstCastProduct = lstCastProduct;
     }
 }

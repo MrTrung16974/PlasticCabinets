@@ -57,20 +57,6 @@ public class LogicAdminControler {
         return fileLink;
     }
 
-//    chuyển sang chi tiết sản phẩm
-    @GetMapping("/edit-product/{id}/detail")
-    public String editProductDetail(@PathVariable("id") Integer idProduct, Model model) {
-        Products product = null;
-        for (Products p : mockData.getAllProduct()) {
-            if(p.getId() == idProduct) {
-                product = p;
-            }
-        }
-        model.addAttribute("product", product);
-        model.addAttribute("allImageProduct", mockData.getAllImageProduct());
-        return "admin/page/editProduct";
-    }
-
     //    create image product
     @PostMapping(value = "/image-product")
     @ResponseBody
@@ -99,6 +85,20 @@ public class LogicAdminControler {
         }
         return 0;
 
+    }
+
+//    chuyển sang chi tiết sản phẩm
+    @GetMapping("/edit-product/{id}/detail")
+    public String editProductDetail(@PathVariable("id") Integer idProduct, Model model) {
+        Products product = null;
+        for (Products p : mockData.getAllProduct()) {
+            if(p.getId() == idProduct) {
+                product = p;
+            }
+        }
+        model.addAttribute("product", product);
+        model.addAttribute("allImageProduct", mockData.getAllImageProduct());
+        return "admin/page/editProduct";
     }
 
 //    Edit product

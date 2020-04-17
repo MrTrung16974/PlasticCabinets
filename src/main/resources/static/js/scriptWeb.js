@@ -34,5 +34,25 @@ $(document).ready(function() {
             }
         });
     });
+    if($("#image-Product-1").attr('src') == '') {
+        $("#carousel-item-image-1").remove();
+        $("#target-item-image-1").remove();
+    }
+    if($("#image-Product-2").attr('src') == '') {
+        $("#carousel-item-image-2").remove();
+        $("#target-item-image-2").remove();
+    }
+    if($("#image-Product-3").attr('src') == '') {
+        $("#carousel-item-image-3").remove();
+        $("#target-item-image-3").remove();
+    }
+    if($("#image-Product-4").attr('src') == '') {
+        $("#carousel-item-image-4").remove();
+        $("#target-item-image-4").remove();
+    }
+    if($("#image-Product-5").attr('src') == '') {
+        $("#carousel-item-image-5").remove();
+        $("#target-item-image-5").remove();
+    }
 
 });

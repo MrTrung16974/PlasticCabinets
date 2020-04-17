@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Table(name = "products")
+@Table(name = "love_product")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"created_date", "modified_date"}, allowGetters = true)
 @Entity
@@ -46,6 +46,10 @@ public class LoveProduct implements Serializable {
 
     @Column(name = "create_by")
     private Integer createBy;
+
+    public LoveProduct() {
+
+    }
 
     public LoveProduct(String name, Integer status, String description, Integer productId, Integer idImg, Date created_date, Date modified_date, Integer createBy) {
         this.name = name;

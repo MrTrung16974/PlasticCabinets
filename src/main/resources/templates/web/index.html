@@ -35,13 +35,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img width="100%" height="430" th:src="@{/image/slide/slide-1.jpg}" class="d-block w-100" alt="...">
+                                    <img width="100%" height="530" th:src="@{/image/slide/slide-1.jpg}" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img width="100%" height="430" th:src="@{/image/slide/slide-2.jpg}" class="d-block w-100" alt="...">
+                                    <img width="100%" height="530" th:src="@{/image/slide/slide-2.jpg}" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img width="100%" height="430" th:src="@{/image/slide/slide-3.jpg}" class="d-block w-100" alt="...">
+                                    <img width="100%" height="530" th:src="@{/image/slide/slide-3.jpg}" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -59,51 +59,49 @@
         </div>
         <div class="all-content">
             <div class="menu">
-                <ul>
-                    <li class="active">
-                        <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-tre-em.jpg}">
-                        <br>
-                        <a href="#">Tủ trẻ em</a>
-                    </li>
-                    <li>
-                        <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-quan-ao.jpg}">
-                        <br>
-                        <a href="#">Tủ quần áo</a>
-                    </li>
-                    <li>
-                        <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-dai-loan-canh-son.jpg}">
-                        <br>
-                        <a href="#">Tủ đài loan cánh sơn</a>
-                    </li>
-                    <li>
-                        <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-quan-ao-han-quoc.jpg}">
-                        <br>
-                        <a href="#">Tủ quần áo hàn quốc</a>
-                    </li>
-                    <li>
-                        <img width="50" height="50" class="product" th:src="@{/image/Icon/ban-hoc.jpg}">
-                        <br>
-                        <a href="#">Bàn học</a>
-                    </li>
-                    <li>
-                        <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-giay.jpg}">
-                        <br>
-                        <a href="#">Tủ giày</a>
-                    </li>
-                    <li>
-                        <img width="50" height="50" class="product" th:src="@{/image/Icon/giuong-va-tu-bep.jpg}">
-                        <br>
-                        <a href="#">Giường và tủ bếp</a>
-                    </li>
-                    <li>
-                        <img width="50" height="50" class="product" th:src="@{/image/Icon/ke-tivi.jpg}">
-                        <br>
-                        <a href="#">Kệ tivi</a>
-                    </li>
-                </ul>
+                <a th:href="@{'/product/webHome?type=1'}" class="active">
+                    <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-tre-em.jpg}">
+                    <br>
+                    <p>Tủ trẻ em</p>
+                </a>
+                <a th:href="@{'/product/webHome?type=2'}">
+                    <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-quan-ao.jpg}">
+                    <br>
+                    <p>Tủ quần áo</p>
+                </a>
+                <a th:href="@{'/product/webHome?type=3'}">
+                    <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-dai-loan-canh-son.jpg}">
+                    <br>
+                    <p>Tủ đài loan cánh sơn</p>
+                </a>
+                <a th:href="@{'/product/webHome?type=4'}">
+                    <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-quan-ao-han-quoc.jpg}">
+                    <br>
+                    <p>Tủ quần áo hàn quốc</p>
+                </a>
+                <a th:href="@{'/product/webHome?type=5'}">
+                    <img width="50" height="50" class="product" th:src="@{/image/Icon/ban-hoc.jpg}">
+                    <br>
+                    <p>Bàn học</p>
+                </a>
+                <a th:href="@{'/product/webHome?type=6'}">
+                    <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-giay.jpg}">
+                    <br>
+                    <p>Tủ giày</p>
+                </a>
+                <a th:href="@{'/product/webHome?type=7'}">
+                    <img width="50" height="50" class="product" th:src="@{/image/Icon/giuong-va-tu-bep.jpg}">
+                    <br>
+                    <p>Giường và tủ bếp</p>
+                </a>
+                <a th:href="@{'/product/webHome?type=8'}">
+                    <img width="50" height="50" class="product" th:src="@{/image/Icon/ke-tivi.jpg}">
+                    <br>
+                    <p>Kệ tivi</p>
+                </a>
             </div>
             <div class="list-product">
-                <div th:each="product : ${lstProduct}" class="card">
+                <div th:each="product : ${productOfPage}" class="card">
                     <img th:src="@{${product.getImgProduct()}}" height="140" class="card-img-top rounded" alt="...">
                     <div th:text="${product.getPromotion() + ' %'}" class="sale">54%</div>
                     <div class="card-body">
@@ -131,9 +129,9 @@
             </div>
             <div class="list-all-product">
             <div class="menu-product">
-                <div class="active">Sản phẩm mới nhất</div>
-                <div>Sản phẩm mua nhiều nhất</div>
-                <div>Sản phẩm nổi bật</div>
+                <a th:href="@{'/product/webHome?hot=1'}" class="active">Sản phẩm nổi bật</a>
+                <a th:href="@{'/product/webHome?hot=2'}" >Sản phẩm mua nhiều nhất</a>
+                <a th:href="@{'/product/webHome?hot=3'}" >Sản phẩm mới nhất</a>
             </div>
             <div class="list-product-newest">
                 <div th:each="product : ${goodLstGame}" class="card">

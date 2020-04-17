@@ -55,6 +55,7 @@ $(document).ready(function () {
 
     $("#btnSaveProductCreate").on('click', function () {
         console.log("OK");
+        console.log($("#createProductType").val());
         let idProduct = $("#editProductId").val();
         let product = {
             name:$("#createProductName").val().trim(),
@@ -64,7 +65,7 @@ $(document).ready(function () {
             oldPrice:$("#createProductOldPrice").val().trim(),
             promotion:$("#createProductPromotion").val(),
             star: $("#createProductStar").val(),
-            category_id: $().val("#createProductType")
+            categoryId: $("#createProductType").val()
         };
         console.log(product);
         $.ajax({
@@ -99,7 +100,7 @@ $(document).ready(function () {
             oldPrice:$("#editProductOldPrice").val().trim(),
             promotion:$("#editProductPromotion").val(),
             star: $("#editProductStar").val(),
-            category_id: $("#editProductType").val()
+            categoryId: $("#editProductType").val()
         };
         console.log(updateProduct);
         $.ajax({

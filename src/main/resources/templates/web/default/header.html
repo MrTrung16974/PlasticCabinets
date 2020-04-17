@@ -35,7 +35,6 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-
                 </div>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <ul class="login">
@@ -46,28 +45,28 @@
                                 <ul class="content-info">
                                     <li>
                                         <a href="#">
-                                            <img src="" alt="">
+                                            <img width="50" height="50" src="http://localhost:8080/link/1587030541-c8f124d5057ce322ba6d-e1577762635887.jpg" alt="">
                                             <div class="infomation">
-                                                <p>Siêu khuyến mãi</p>
-                                                <p>Khuyễn mãi đến 50% chó tất cả sản phẩm</p>
+                                                <h6>Siêu khuyến mãi</h6>
+                                                <p>Khuyễn mãi đến 50% cho tất cả sản phẩm</p>
                                             </div>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <img src="" alt="">
+                                            <img width="50" height="50" src="http://localhost:8080/link/1587030541-c8f124d5057ce322ba6d-e1577762635887.jpg" alt="">
                                             <div class="infomation">
-                                                <p>Siêu khuyến mãi</p>
-                                                <p>Khuyễn mãi đến 50% chó tất cả sản phẩm</p>
+                                                <h6>Tủ nhựa mới nhất</h6>
+                                                <p>Đẳng cấp là mãi mãi</p>
                                             </div>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <img src="" alt="">
+                                            <img width="50" height="50" src="http://localhost:8080/link/1587030541-c8f124d5057ce322ba6d-e1577762635887.jpg" alt="">
                                             <div class="infomation">
-                                                <p>Siêu khuyến mãi</p>
-                                                <p>Khuyễn mãi đến 50% chó tất cả sản phẩm</p>
+                                                <h6>Supber siêu Saiyan</h6>
+                                                <p>Bán thuốc trừ sâu mới nhất</p>
                                             </div>
                                         </a>
                                     </li>
@@ -87,16 +86,16 @@
                         <a th:href="@{'/product/webHome'}" ><img width="150px" class="image-logo" th:src="@{/image/logo-viet-nhat.png}" height="66"></a>
                     </div>
                 </div>
-                <div class="col-10 col-sm-10 col-md-10 col-lg-8 col-xl-8">
+                <div class="col-10 col-sm-10 col-md-10 col-lg-9 col-xl-9">
                     <div class="search">
                         <input class="search-input" id="keywordSearch" type="text" placeholder="Nhập tên sản phẩm!!!">
                         <button type="submit" id="searchProduct" class="btn-search btn-danger">Search</button>
                     </div>
                 </div>
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
                     <div class="login">
                         <button style="position: relative;" type="button" class="btn btn-danger">
-                            <i class="fab fa-opencart"></i>
+                            <a th:href="@{${'/product/cast?id=' + 1}}"><i style="color:#fff"  class="fab fa-opencart"></i></a>
                             <p th:text="${lengthProduct}" class="cast-product">1</p>
                         </button>
                     </div>
