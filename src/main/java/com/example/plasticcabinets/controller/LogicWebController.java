@@ -27,6 +27,8 @@ public class LogicWebController {
     private Set<Products> lstSimilarProduct = new HashSet<>();
     private Set<Products> lstCast = new HashSet<>();
     private List<Products> lstCastProduct = new ArrayList<>();
+    private List<Products> productOfPage = new ArrayList<>();
+    private List<Products> goodProductOfPage = new ArrayList<>();
 
     @Autowired
     ProductsRepository productsRepository;
@@ -49,6 +51,70 @@ public class LogicWebController {
     @Autowired
     MockData mockData;
 
+    @RequestMapping(value = "productHome")
+    public String homeProduct(Model model,@RequestParam(value = "hot", defaultValue = "1") int hot, @RequestParam(value = "type",
+            defaultValue = "1") int type, @RequestParam(value = "Page",defaultValue = "0") int page, @RequestParam(value = "PageGood"
+            , defaultValue = "0") int pageGood) {
+//        start product pagination
+        int index = page * Constant.PAGE_SIZE;
+
+//        end product pagination
+        int lengthProduct = page * Constant.PAGE_SIZE + Constant.PAGE_SIZE >  mockData.getAllProduct().size()
+                ?  mockData.getAllProduct().size() :page * Constant.PAGE_SIZE + Constant.PAGE_SIZE;
+
+        productOfPage.clear();
+        for(int i = index; i< lengthProduct; i++) {
+            Products product =  mockData.getAllProduct().get(i);
+            if(type == product.getCategoryId()) {
+                productOfPage.add(product);
+            }
+        }
+//        number product pagination
+        int totalPage =  mockData.getAllProduct().size() % Constant.PAGE_SIZE != 0
+                ? ( mockData.getAllProduct().size()/Constant.PAGE_SIZE )
+                : ( mockData.getAllProduct().size()/Constant.PAGE_SIZE -1);
+
+//        start good product pagination
+        int indexGood = pageGood * Constant.PAGE_GOOD_SIZE;
+
+//        end good product pagination
+        int lengthProductGood =  pageGood * Constant.PAGE_GOOD_SIZE + Constant.PAGE_GOOD_SIZE > mockData.getAllGoodProduct().size() ?
+                mockData.getAllGoodProduct().size() :pageGood * Constant.PAGE_GOOD_SIZE + Constant.PAGE_GOOD_SIZE;
+
+        goodProductOfPage.clear();
+        for (int i = indexGood; i < lengthProductGood; i++) {
+            Products product = mockData.getAllGoodProduct().get(i);
+            switch (hot) {
+                case 1:
+                    goodProductOfPage.add(product);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.out.println("ERROR!");
+                    break;
+            }
+        }
+//        number good product pagination
+        int totalGoodPage = mockData.getAllGoodProduct().size() % Constant.PAGE_GOOD_SIZE != 0
+                ? (mockData.getAllGoodProduct().size()/Constant.PAGE_GOOD_SIZE )
+                : (mockData.getAllGoodProduct().size()/Constant.PAGE_GOOD_SIZE -1);
+
+
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("currentGoodPage", pageGood);
+        model.addAttribute("totalGoodPage", totalGoodPage);
+        model.addAttribute("productOfPage", productOfPage);
+        model.addAttribute("goodLstGame", goodProductOfPage);
+
+        model.addAttribute("lstProduct", mockData.getAllProduct());
+        model.addAttribute("allImageProduct", mockData.getAllImageProduct());
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
+        return "web/index";
+    }
     //    chuyển sang chi tiết sản phẩm
     @GetMapping("/detail/{id}")
     public String productDetail(@PathVariable("id") Integer idProduct, Model model) {
