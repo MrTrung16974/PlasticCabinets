@@ -13,32 +13,33 @@
     <div class="breadcrumb">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a th:href="@{'/product/webHome'}">Home</a></li>
+                <li class="breadcrumb-item"><a th:href="@{'/product/productHome'}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Cast Product</li>
             </ol>
         </nav>
     </div>
-    <div class="lst-cast-product" th:each="product : ${lstCast}">
-        <div  class="row">
-            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                <input type="checkbox" id="checkProduct" name="checkProduct" />
-            </div>
-            <div class="col-5 col-sm-5 col-md-4 col-lg-4 col-xl-4">
-                <p>Sản phẩm</p>
-            </div>
-            <div class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2">
-                <p>Đơn giá</p>
-            </div>
-            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                <p>Số lượng</p>
-            </div>
-            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                <p>Số tiền</p>
-            </div>
-            <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
-                <p>Thao tác</p>
-            </div>
+    <div  class="row">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+            <input type="checkbox" id="checkProduct" name="checkProduct" />
         </div>
+        <div class="col-5 col-sm-5 col-md-4 col-lg-4 col-xl-4">
+            <p>Sản phẩm</p>
+        </div>
+        <div class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2">
+            <p>Đơn giá</p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+            <p>Số lượng</p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+            <p>Số tiền</p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+            <p>Thao tác</p>
+        </div>
+    </div>
+    <div class="lst-cast-product" th:each="product : ${lstCast}">
+        <input type="hidden" id="idCastProduct" th:value="${product.getId()}">
         <div class="row">
             <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
                 <div class="checkbox">
@@ -52,7 +53,6 @@
                 </div>
                 <div class="name-product">
                     <a th:href="@{${'/product/detail/' + product.getId()}}" th:text="${product.getName()}" class="card-title">Tủ trẻ em</a>
-                    <p th:text="${product.getDescription()}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
             </div>
             <div class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2">
@@ -63,14 +63,13 @@
                         <i th:each="i : ${#numbers.sequence(1,5)}"
                            th:class="${product.getStar() >= i ? 'fas fa-star' : 'far fa-star'}"></i>
                     </div>
-                    <p class="card-text">Đã bán 2,4k</p>
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                <div class="cast-footer">
-                    <a href="">-</a>
-                    <p>1</p>
-                    <a href="">+</a>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-light">-</button>
+                    <button type="button" class="btn btn-light">1</button>
+                    <button type="button" class="btn btn-light">+</button>
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
@@ -80,7 +79,7 @@
             </div>
             <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
                 <div class="cast-footer">
-                    <a  th:href="@{${'/product/delete-cast/' + product.getId()}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                    <button id="deleteCastProduct" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                 </div>
             </div>
         </div>

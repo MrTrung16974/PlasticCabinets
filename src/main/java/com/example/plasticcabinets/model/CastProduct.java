@@ -15,8 +15,6 @@ import java.util.Date;
 @Entity
 public class CastProduct implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "user_id")

@@ -13,7 +13,7 @@
     <div class="breadcrumb">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a th:href="@{'/product/webHome'}">Home</a></li>
+                <li class="breadcrumb-item"><a th:href="@{'/product/productHome'}">Home</a></li>
                 <li class="breadcrumb-item"><a th:text="${productType}" th:href="@{${'/product/webHome?type=' + product.getCategoryId()}}">Home</a></li>
                 <li th:text="${product.getName()}" class="breadcrumb-item active" aria-current="page">Detail Product</li>
             </ol>

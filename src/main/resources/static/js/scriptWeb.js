@@ -55,4 +55,18 @@ $(document).ready(function() {
         $("#target-item-image-5").remove();
     }
 
+    $("#deleteCastProduct").on('click', function () {
+        let keyword = $("#idCastProduct").val();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/product/delete-cast/"+ keyword,
+            processData: false,
+            contentType: 'application/json',
+            success : function () {
+                window.location.reload();
+                // window.location.href = "http://localhost:8080/product/cast?id=" + keyword;
+            }
+        });
+    });
+
 });

@@ -59,42 +59,42 @@
         </div>
         <div class="all-content">
             <div class="menu">
-                <a th:href="@{'/product/webHome?type=1'}" class="active">
+                <a th:href="@{'/product/productHome?type=1'}" class="active">
                     <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-tre-em.jpg}">
                     <br>
                     <p>Tủ trẻ em</p>
                 </a>
-                <a th:href="@{'/product/webHome?type=2'}">
+                <a th:href="@{'/product/productHome?type=2'}">
                     <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-quan-ao.jpg}">
                     <br>
                     <p>Tủ quần áo</p>
                 </a>
-                <a th:href="@{'/product/webHome?type=3'}">
+                <a th:href="@{'/product/productHome?type=3'}">
                     <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-dai-loan-canh-son.jpg}">
                     <br>
                     <p>Tủ đài loan cánh sơn</p>
                 </a>
-                <a th:href="@{'/product/webHome?type=4'}">
+                <a th:href="@{'/product/productHome?type=4'}">
                     <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-quan-ao-han-quoc.jpg}">
                     <br>
                     <p>Tủ quần áo hàn quốc</p>
                 </a>
-                <a th:href="@{'/product/webHome?type=5'}">
+                <a th:href="@{'/product/productHome?type=5'}">
                     <img width="50" height="50" class="product" th:src="@{/image/Icon/ban-hoc.jpg}">
                     <br>
                     <p>Bàn học</p>
                 </a>
-                <a th:href="@{'/product/webHome?type=6'}">
+                <a th:href="@{'/product/productHome?type=6'}">
                     <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-giay.jpg}">
                     <br>
                     <p>Tủ giày</p>
                 </a>
-                <a th:href="@{'/product/webHome?type=7'}">
+                <a th:href="@{'/product/productHome?type=7'}">
                     <img width="50" height="50" class="product" th:src="@{/image/Icon/giuong-va-tu-bep.jpg}">
                     <br>
                     <p>Giường và tủ bếp</p>
                 </a>
-                <a th:href="@{'/product/webHome?type=8'}">
+                <a th:href="@{'/product/productHome?type=8'}">
                     <img width="50" height="50" class="product" th:src="@{/image/Icon/ke-tivi.jpg}">
                     <br>
                     <p>Kệ tivi</p>
@@ -122,16 +122,16 @@
             <div class="pagination" >
                 <a th:each="i : ${#numbers.sequence(0, totalPage)}"
                    th:class="${currentPage == i} ? 'active' : 'inactive'"
-                   th:href="@{'webHome?Page=' + ${i}}" th:text="${i+1}">
+                   th:href="@{'productHome?Page=' + ${i}}" th:text="${i+1}">
                 </a>
                 <span>...</span>
-                <a style="width: 40px;" th:href="@{'webHome?Page=' + ${currentPage >= totalPage ? currentPage : currentPage+1}}">Next</a>
+                <a style="width: 40px;" th:href="@{'productHome?Page=' + ${currentPage >= totalPage ? currentPage : currentPage+1}}">Next</a>
             </div>
             <div class="list-all-product">
             <div class="menu-product">
-                <a th:href="@{'/product/webHome?hot=1'}" class="active">Sản phẩm nổi bật</a>
-                <a th:href="@{'/product/webHome?hot=2'}" >Sản phẩm mua nhiều nhất</a>
-                <a th:href="@{'/product/webHome?hot=3'}" >Sản phẩm mới nhất</a>
+                <a th:href="@{'/product/productHome?hot=1'}" class="active">Sản phẩm nổi bật</a>
+                <a th:href="@{'/product/productHome?hot=2'}" >Sản phẩm mua nhiều nhất</a>
+                <a th:href="@{'/product/productHome?hot=3'}" >Sản phẩm mới nhất</a>
             </div>
             <div class="list-product-newest">
                 <div th:each="product : ${goodLstGame}" class="card">
@@ -155,10 +155,10 @@
             <div class="pagination" >
                 <a th:each="i : ${#numbers.sequence(0,totalGoodPage)}"
                    th:class="${currentGoodPage == i} ? 'active' : 'inactive'"
-                   th:href="@{'webHome?PageGood=' + ${i}}" th:text="${i+1}">
+                   th:href="@{'productHome?PageGood=' + ${i}}" th:text="${i+1}">
                 </a>
                 <span>...</span>
-                <a style="width: 40px;" th:href="@{'webHome?PageGood=' + ${currentGoodPage >= totalGoodPage? currentGoodPage: currentGoodPage+1}}">Next</a>
+                <a style="width: 40px;" th:href="@{'productHome?PageGood=' + ${currentGoodPage >= totalGoodPage? currentGoodPage: currentGoodPage+1}}">Next</a>
             </div>
         </div>
         </div>

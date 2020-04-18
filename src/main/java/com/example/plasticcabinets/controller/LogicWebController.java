@@ -13,10 +13,7 @@ import info.debatty.java.stringsimilarity.Levenshtein;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -51,6 +48,7 @@ public class LogicWebController {
     @Autowired
     MockData mockData;
 
+//    return value in index.html
     @RequestMapping(value = "productHome")
     public String homeProduct(Model model,@RequestParam(value = "hot", defaultValue = "1") int hot, @RequestParam(value = "type",
             defaultValue = "1") int type, @RequestParam(value = "Page",defaultValue = "0") int page, @RequestParam(value = "PageGood"
@@ -121,16 +119,19 @@ public class LogicWebController {
         Products product = null;
         ImageProduct imageProduct = null;
         String productType = null;
+//        get a product detail
         for (Products p : mockData.getAllProduct()) {
             if(p.getId() == idProduct) {
                 product = p;
             }
         }
+//        get a image product detail
         for (ImageProduct img : mockData.getAllImageProduct()) {
             if(img.getId() == product.getIdImg()) {
                 imageProduct = img;
             }
         }
+
         lstSimilarProduct.clear();
         for (Products p : mockData.getAllProduct()) {
             if(leven.distance(p.getName(), product.getName()) < 7.0 && lstSimilarProduct.size() <= 8) {
@@ -211,23 +212,31 @@ public class LogicWebController {
     public String productCast(@PathVariable("id") Integer idProduct, Model model) {
         Products product = null;
         CastProduct castProduct = null;
-        for (Products p : mockData.getAllProduct()) {
-            if(p.getId() == idProduct) {
-                product = p;
+        castProduct = castProductRepository.findByProductId(idProduct);
+        if(castProduct != null) {
+            castProductRepository.updateByCast(idProduct, castProduct.getTheNumber()+1);
+        }else {
+            for (Products p : mockData.getAllProduct()) {
+                if(p.getId() == idProduct) {
+                    product = p;
+                }
             }
+            castProductRepository.saveCastProduct( product.getId(),1, 1,
+                    "Chờ chủ cửa hàng phê duyệt",1, product.getId(), product.getIdImg(), 1);
         }
-//        castProduct = castProductRepository.findByCast(product.getId());
-        castProductRepository.saveCastProduct(1, 1,
-                "Chờ chủ cửa hàng phê duyệt",1, product.getId(), product.getIdImg(), 1);
+
+
         model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "redirect:/product/webHome";
     }
 
+//    return value in cast.html
     @RequestMapping("/cast")
-    public String Cast(Model model, @RequestParam(value = "id", defaultValue = "0") int id, @RequestParam(value = "Page", defaultValue = "0") int page) {
+    public String Cast(Model model, @RequestParam(value = "id", defaultValue = "0") int id,
+                       @RequestParam(value = "Page", defaultValue = "0") int page) {
         lstCastProduct = productsRepository.getCastProduct();
-
         String mess = null;
+
         int index = page * Constant.PAGE_SIZE;
         int lengthProduct = page * Constant.PAGE_SIZE + Constant.PAGE_SIZE >  lstCastProduct.size() ?   lstCastProduct.size() :
                 page * Constant.PAGE_SIZE + Constant.PAGE_SIZE;
@@ -255,6 +264,29 @@ public class LogicWebController {
         model.addAttribute("mess", mess);
         model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "web/page/cast";
+    }
+
+//    delete cast product
+    @RequestMapping("/delete-cast/{id}")
+    @ResponseBody
+    public void Cast(Model model, @PathVariable(value = "id") Integer id) {
+        lstCastProduct = productsRepository.getCastProduct();
+        String mess = null;
+
+        if(id != null) {
+            castProductRepository.deleteById(id);
+        }else {
+            mess = "Không có sản phẩm tồn tại!";
+        }
+
+        model.addAttribute("mess", mess);
+    }
+
+//    edit cast product
+    @GetMapping("/editCast")
+    @ResponseBody
+    public void editCast(Model model, @RequestParam(value = "id", defaultValue = "0") int id,
+                           @RequestParam(value = "countProduct", defaultValue = "0") int countProduct) {
     }
 
 }
