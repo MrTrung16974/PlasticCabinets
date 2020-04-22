@@ -128,18 +128,18 @@ header.header div.top-menu ul li>div.sub-menu {
 
 header.header div.top-menu ul.login li div.sub-menu>p {
     font-size: 20px;
-    margin-bottom: 0px;
     text-align: center;
     color: #c1afaf;
     padding-bottom: 10px;
     border-bottom: 1px solid #c1afaf;
     padding: 10px;
+    margin-bottom: -10px;
 }
 header.header div.top-menu ul li>div.sub-menu ul.content-info {
     display: block;
     background-color: #f5f5f5;
     border-radius: 5px;
-    padding: 10px;
+    padding: 0px 10px;
 }
 header.header div.top-menu ul.login li div.sub-menu ul.content-info>li {
     border-bottom: 1px solid #f3c5c5;
@@ -164,6 +164,7 @@ header.header div.top-menu ul.login li div.sub-menu>a {
     text-align: center;
     display: inherit;
     border-radius: 5px;
+    padding: 10px;
 }
 
 header.header div.top-menu ul li>div.sub-menu>ul>li>a {
@@ -175,70 +176,70 @@ header.header div.top-menu ul li:hover>div.sub-menu {
 }
 
 header.header div.top-menu div.contact>ul {
-float: left;
-height: 20px;
-line-height: 20px;
+    float: left;
+    height: 20px;
+    line-height: 20px;
 }
 
 header.header div.top-menu div.contact ul li:nth-child(1) {
-border-right: 2px solid #cebfbf;
+    border-right: 2px solid #cebfbf;
 }
 
 header.header div.top-menu ul.login {
-float: right;
-height: 20px;
-line-height: 20px;
+    float: right;
+    height: 20px;
+    line-height: 20px;
 }
 
 header.header div.top-menu ul.login>li:last-child {
-border-left: 2px solid #cebfbf;
+    border-left: 2px solid #cebfbf;
 }
 
 
 header.header div.top-menu div.logo {
-text-align: center;
+    text-align: center;
 }
 
 header.header div.top-menu div.search,
 header.header div.top-menu div.login {
-margin-top: 20px;
-position: relative;
+    margin-top: 20px;
+    position: relative;
 }
 
 header.header div.top-menu div.login p.cast-product {
-position: absolute;
-top: -10px;
-right: -8px;
-text-align: center;
-width: 20px;
-line-height: 20px;
-color: #fff;
-height: 20px;
-background-color: #6868d4;
-border-radius: 50%;
-font-family: initial;
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    text-align: center;
+    width: 20px;
+    line-height: 20px;
+    color: #fff;
+    height: 20px;
+    background-color: #6868d4;
+    border-radius: 50%;
+    font-family: initial;
 }
 
 header.header div.top-menu div.search input.search-input {
-border: none;
-width: 100%;
-height: 35px;
-border-radius: 3px;
-padding: 10px 12px;
+    border: none;
+    width: 100%;
+    height: 35px;
+    border-radius: 3px;
+    padding: 10px 12px;
 }
 
 header.header div.top-menu div.search button.btn-search {
-position: absolute;
-right: 3px;
-top: 3px;
-border: none;
-height: 29px;
-width: 50px;
-font-size: 13px;
-border-radius: 3px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    border: none;
+    height: 29px;
+    width: 50px;
+    font-size: 13px;
+    border-radius: 3px;
 }
 header.header p.title {
-margin-top: 50px;
+    margin-top: 50px;
 }
 
 
@@ -428,12 +429,67 @@ footer.footer div.row div.col-12.col-sm-12.col-md-3.col-lg-3.col-xl-3 {
 div.messenger {
     position: fixed;
     right: 20px;
-    bottom: 100px;
-    margin-left: -100px;
+    bottom: 0px;
     text-align: center;
     color: #000000;
     font-size: 12px;
     cursor: pointer;
+}
+
+div.messenger div.sub-messenger{
+    position: fixed;
+    bottom: 0px;
+    right: 10px;
+    width: 300px;
+    height: 350px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px #cab1b1;
+    border-radius: 5px 5px 0px 0px;
+}
+
+div.messenger div.sub-messenger div.header-mess{
+
+}
+
+div.messenger div.sub-messenger div.header-mess>i{
+
+}
+
+div.messenger div.sub-messenger div.header-mess>span{
+
+}
+
+div.messenger div.sub-messenger div.body-mess div.text-mess{
+    width: 80%;
+}
+div.messenger div.sub-messenger div.body-mess div.text-mess.admin{
+    float: left;
+}
+div.messenger div.sub-messenger div.body-mess div.text-mess.user{
+    float: right;
+}
+
+div.messenger div.sub-messenger div.body-mess div.text-mess>span{
+    font-size: 13;
+    color: #fff;
+}
+div.messenger div.sub-messenger div.body-mess div.text-mess>img.image-user{
+    border-radius: 50%;
+}
+div.messenger div.sub-messenger div.body-mess div.text-mess div.text-info{
+    border-radius: 20px;
+    background-color: #4e73df;
+    padding: 10px 12px;
+    display: block;
+}
+div.messenger div.sub-messenger div.footer-mess{
+
+}
+div.messenger div.sub-messenger div.footer-mess>input.send-mess{
+
+}
+div.messenger div.sub-messenger div.footer-mess>button.btn-mess{
+
 }
 
 

@@ -33,8 +33,10 @@ public class StoreFileService {
             Path file = rootLocation.resolve(fileName);
             Resource resource = new UrlResource(file.toUri());
             if(resource.exists() || resource.isReadable()) {
+                System.out.println(resource.exists());
+                System.out.println(resource.isReadable());
                 return resource;
-            }else {
+            }else{
                 throw new RuntimeException("FAIL!");
             }
         }catch (MalformedURLException e) {

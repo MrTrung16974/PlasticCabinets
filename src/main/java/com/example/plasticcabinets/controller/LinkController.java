@@ -31,6 +31,7 @@ public class LinkController {
         }
 
         return ResponseEntity.ok().contentType(type)
-                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + file.getFilename() + "\"").body(file);
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" +
+                        file.getFilename() + "\"").body(file);
     }
 }

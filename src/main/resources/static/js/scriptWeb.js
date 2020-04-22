@@ -7,7 +7,21 @@ $(document).ready(function() {
     //         $('div#top-menu').removeClass('flex-menu');
     //     }
 
-    // });
+    // })
+    // ;
+
+    $('div#sub-messenger').hide(0);
+    $('div#sub-messenger').delay(3000).show(500);
+
+    $('div#mess').on('click', function () {
+        $('div#sub-messenger').show(500);
+    });
+
+    $('i#down-mess').on('click', function () {
+        $('div#sub-messenger').hide(500);
+    });
+
+
     $('#keywordSearch').on('keypress', function (e) {
         if (e.keyCode == 13) {
             let keyword = $("#keywordSearch").val().trim();

@@ -16,8 +16,8 @@ create table users(
     birthday date null,
     phone int(12) null,
     role_id int(6) unsigned not null,
-    created_date datetime not null,
-    modifieddate datetime not null,
+    created_date datetime null,
+    modifieddate datetime null,
     createby int(6) unsigned not null
 );
 
@@ -77,12 +77,12 @@ create table categorys(
 create table image_product(
 	id int(6) unsigned primary key not null AUTO_INCREMENT,
     img_product_1 varchar(200) not null,
-    img_product_2 varchar(200) not null,
-    img_product_3 varchar(200) not null,
-    img_product_4 varchar(200) not null,
+    img_product_2 varchar(200) null,
+    img_product_3 varchar(200) null,
+    img_product_4 varchar(200) null,
     img_product_5 varchar(200) not null,
-    created_date datetime not null,
-    modifieddate datetime not null,
+    created_date datetime null,
+    modifieddate datetime null,
     createby int(6) unsigned not null
 );
 

@@ -223,6 +223,12 @@ public class LogicWebController {
             }
             castProductRepository.saveCastProduct( product.getId(),1, 1,
                     "Chờ chủ cửa hàng phê duyệt",1, product.getId(), product.getIdImg(), 1);
+            for(CastProduct cast : mockData.getAllCastProduct()) {
+                if(cast.getCreateBy() == 1) {
+                    mockData.getLstCastProduct().add(cast);
+                }
+            }
+
         }
 
 
@@ -275,6 +281,11 @@ public class LogicWebController {
 
         if(id != null) {
             castProductRepository.deleteById(id);
+            for(CastProduct cast : mockData.getAllCastProduct()) {
+                if(cast.getCreateBy() == 1) {
+                    mockData.getLstCastProduct().add(cast);
+                }
+            }
         }else {
             mess = "Không có sản phẩm tồn tại!";
         }
