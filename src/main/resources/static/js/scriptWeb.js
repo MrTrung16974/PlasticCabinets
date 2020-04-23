@@ -10,18 +10,30 @@ $(document).ready(function() {
     // })
     // ;
 
-    $('div#sub-messenger').hide(0);
     $('div#sub-messenger').delay(3000).show(500);
 
     $('div#mess').on('click', function () {
         $('div#sub-messenger').show(500);
+        $('div#mess').hide(400);
+
     });
 
     $('i#down-mess').on('click', function () {
         $('div#sub-messenger').hide(500);
+        $('div#mess').show(600);
     });
 
+    $("a#notifications").mouseenter(function(){
+        console.log("OK");
+        $('div#sub-menu').show(500);
+    });
 
+    $("div#sub-menu").mouseleave(function(){
+        console.log("OK");
+        $('div#sub-menu').hide(500);
+    });
+
+    //evert enter search
     $('#keywordSearch').on('keypress', function (e) {
         if (e.keyCode == 13) {
             let keyword = $("#keywordSearch").val().trim();
@@ -36,6 +48,8 @@ $(document).ready(function() {
             });
         }
     });
+
+    //evert click search
     $("#searchProduct").on('click', function () {
         let keyword = $("#keywordSearch").val().trim();
         $.ajax({

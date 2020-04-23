@@ -46,7 +46,7 @@
                     <input type="checkbox" id="checkProduct" name="checkProduct" />
                 </div>
             </div>
-            <div class="col-5 col-sm-5 col-md-4 col-lg-4 col-xl-4">
+            <div style="display: flex;" class="col-5 col-sm-5 col-md-4 col-lg-4 col-xl-4">
                 <div class="img-product">
                     <img th:src="@{${product.getImgProduct()}}" height="100" width="100" alt="ảnh sản phẩm">
                     <div th:text="${product.getPromotion() + ' %'}" class="sale">54%</div>
@@ -101,7 +101,7 @@
         <div class="right-pay">
             <span>Tổng tiền hàng (3 Sản phẩm) : </span>
             <span class="pay-money">30000 VNĐ</span>
-            <button type="button" class="btn btn-danger">Thanh Toán</button>
+            <button type="button" class="btn btn-danger btn-pay">Thanh Toán</button>
         </div>
     </div>
 </main>
@@ -110,17 +110,14 @@
 <!-- Start ./ footer -->
 <div th:replace="/web/default/footer :: footer"></div>
 <!-- End ./ footer -->
+
 <!-- start ./ messenger -->
 <div th:replace="/web/default/footer :: messenger"></div>
 <!-- end ./ messenger -->
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script th:src="@{/js/jquery.min.js}"></script>
-<script th:src="@{/js/popper.min.js}"></script>
-<script th:src="@{/js/bootstrap.min.js}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script th:src="@{/js/scriptWeb.js}"></script>
+<!-- Start ./ footer -->
+<div th:replace="/web/default/footer :: javascript"></div>
+<!-- End ./ footer -->
 </body>
 
 </html>

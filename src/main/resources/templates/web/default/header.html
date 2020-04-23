@@ -39,8 +39,8 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <ul class="login">
                         <li>
-                            <a href="#"><i class="fas fa-bell"></i> Thông báo</a>
-                            <div class="sub-menu">
+                            <a id="notifications" href="#"><i class="fas fa-bell"></i> Thông báo</a>
+                            <div style="display: none" id="sub-menu" class="sub-menu">
                                 <p>Thông báo nhận</p>
                                 <ul class="content-info">
                                     <li>
@@ -94,10 +94,10 @@
                 </div>
                 <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
                     <div class="login">
-                        <button style="position: relative;" type="button" class="btn btn-danger">
-                            <a th:href="@{${'/product/cast?id=' + 1}}"><i style="color:#fff"  class="fab fa-opencart"></i></a>
+                        <a th:href="@{${'/product/cast?id=' + 1}}" style="position: relative;height: 42px;" type="button" class="btn btn-danger">
+                            <p ><i style="color:#fff"  class="fab fa-opencart"></i></p>
                             <p th:text="${lengthProduct}" class="cast-product">1</p>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

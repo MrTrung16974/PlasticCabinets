@@ -115,7 +115,6 @@ header.header div.top-menu ul li a {
 }
 
 header.header div.top-menu ul li>div.sub-menu {
-    display: none;
     position: absolute;
     top: 20px;
     background-color: #FFFFFF;
@@ -245,12 +244,13 @@ header.header p.title {
 
 /* end ./ header */
 
+/* Start ./ Slide*/
+div.slide {
+    margin: 1px 0px 20px 0px;
+}
+/* End ./ Slide*/
 
 /* start ./ content */
-
-main.content div.slide {
-    margin-top: 1px;
-}
 
 main.content div.all-content{
     box-shadow: 0px 8px 16px #8e7979;
@@ -429,6 +429,7 @@ footer.footer div.row div.col-12.col-sm-12.col-md-3.col-lg-3.col-xl-3 {
 div.messenger {
     position: fixed;
     right: 20px;
+    z-index: 1000;
     bottom: 0px;
     text-align: center;
     color: #000000;
@@ -448,19 +449,40 @@ div.messenger div.sub-messenger{
 }
 
 div.messenger div.sub-messenger div.header-mess{
-
+    height: 50px;
+    background-color: #f5f5f5;
+    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0px 3px 10px #e0d9d9;
+    position: relative;
 }
 
 div.messenger div.sub-messenger div.header-mess>i{
-
+    position: absolute;
+    right: 15px;
+    line-height: 50px;
+    font-size: 15px;
+    color: #967979;
 }
 
 div.messenger div.sub-messenger div.header-mess>span{
+    position: absolute;
+    left: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 50px;
+    color: #967979;
 
 }
-
+div.messenger div.sub-messenger div.body-mess {
+    height: 265px;
+    width: 100%;
+    padding: 5px;
+    overflow-y: scroll;
+}
 div.messenger div.sub-messenger div.body-mess div.text-mess{
     width: 80%;
+    display: flex;
+    margin-top: 10px;
 }
 div.messenger div.sub-messenger div.body-mess div.text-mess.admin{
     float: left;
@@ -475,22 +497,84 @@ div.messenger div.sub-messenger div.body-mess div.text-mess>span{
 }
 div.messenger div.sub-messenger div.body-mess div.text-mess>img.image-user{
     border-radius: 50%;
+    margin-right: 5px;
 }
 div.messenger div.sub-messenger div.body-mess div.text-mess div.text-info{
     border-radius: 20px;
     background-color: #4e73df;
     padding: 10px 12px;
     display: block;
+    text-align: justify;
+}
+div.messenger div.sub-messenger div.body-mess div.text-mess div.text-info>span {
+    color: #fff;
 }
 div.messenger div.sub-messenger div.footer-mess{
-
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background: #f5f5f5;
+    height: 35px;
 }
 div.messenger div.sub-messenger div.footer-mess>input.send-mess{
-
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    height: 35px;
+    padding: 0px 40px 0px 10px;
+    font-size: 13px;
+    z-index: 10;
 }
 div.messenger div.sub-messenger div.footer-mess>button.btn-mess{
+    z-index: 100;
+    color: #ea0a0a;
+    position: absolute;
+    right: 0;
+    height: 35px;
+    width: 35px;
+    font-size: 15px;
 
 }
 
 
 /* end ./ messenger */
+
+
+/* Start ./ Pay */
+main.content div.pay {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 100;
+    background-color: #fff;
+    height: 120px;
+    box-shadow: 0px 0px 20px #d89c9c;
+}
+
+main.content div.pay div.left-pay {
+    position: absolute;
+    left: 100px;
+    bottom: 20px;
+}
+
+main.content div.pay div.left-pay>span {
+    padding-left: 10px;
+}
+
+main.content div.pay div.right-pay {
+    position: absolute;
+    right: 100px;
+    bottom: 20px;
+
+}
+main.content div.pay div.right-pay>span {
+    padding-right: 20px;
+}
+/* End ./ Pay*/
+
+/* Start ./ Cast */
+
+/* End ./ Cast */

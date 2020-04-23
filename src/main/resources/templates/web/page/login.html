@@ -37,17 +37,15 @@
 <!-- Start ./ footer -->
 <div th:replace="/web/default/footer :: footer"></div>
 <!-- End ./ footer -->
+
 <!-- start ./ messenger -->
 <div th:replace="/web/default/footer :: messenger"></div>
 <!-- end ./ messenger -->
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script th:src="@{/js/jquery.min.js}"></script>
-<script th:src="@{/js/popper.min.js}"></script>
-<script th:src="@{/js/bootstrap.min.js}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script th:src="@{/js/scriptWeb.js}"></script>
+<!-- start ./ messenger -->
+<div th:replace="/web/default/footer :: javascript"></div>
+<!-- end ./ messenger -->
+
 </body>
 
 </html>

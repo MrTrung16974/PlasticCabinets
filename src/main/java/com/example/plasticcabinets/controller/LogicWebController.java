@@ -24,6 +24,7 @@ public class LogicWebController {
     private Set<Products> lstSimilarProduct = new HashSet<>();
     private Set<Products> lstCast = new HashSet<>();
     private List<Products> lstCastProduct = new ArrayList<>();
+    private List<CastProduct> allCastProduct = new ArrayList<>();
     private List<Products> productOfPage = new ArrayList<>();
     private List<Products> goodProductOfPage = new ArrayList<>();
 
@@ -202,7 +203,6 @@ public class LogicWebController {
         model.addAttribute("currentPage", page);
         model.addAttribute("lstSimilarProduct", lstPageProduct);
         model.addAttribute("mess", mess);
-//        model.addAttribute("lstImageProduct", lstImageProduct);
         model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "web/page/searchProduct";
     }
@@ -212,18 +212,24 @@ public class LogicWebController {
     public String productCast(@PathVariable("id") Integer idProduct, Model model) {
         Products product = null;
         CastProduct castProduct = null;
+
         castProduct = castProductRepository.findByProductId(idProduct);
         if(castProduct != null) {
             castProductRepository.updateByCast(idProduct, castProduct.getTheNumber()+1);
         }else {
+//            find a product by id save in cast Product
             for (Products p : mockData.getAllProduct()) {
                 if(p.getId() == idProduct) {
                     product = p;
                 }
             }
+//            save in cast product
             castProductRepository.saveCastProduct( product.getId(),1, 1,
                     "Chờ chủ cửa hàng phê duyệt",1, product.getId(), product.getIdImg(), 1);
-            for(CastProduct cast : mockData.getAllCastProduct()) {
+
+            allCastProduct = castProductRepository.findAll();
+//            load agign cast product
+            for(CastProduct cast : allCastProduct) {
                 if(cast.getCreateBy() == 1) {
                     mockData.getLstCastProduct().add(cast);
                 }
@@ -231,9 +237,8 @@ public class LogicWebController {
 
         }
 
-
         model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
-        return "redirect:/product/webHome";
+        return "redirect:/product/productHome";
     }
 
 //    return value in cast.html
@@ -281,7 +286,10 @@ public class LogicWebController {
 
         if(id != null) {
             castProductRepository.deleteById(id);
-            for(CastProduct cast : mockData.getAllCastProduct()) {
+
+            allCastProduct = castProductRepository.findAll();
+//            load agign cast product
+            for(CastProduct cast : allCastProduct) {
                 if(cast.getCreateBy() == 1) {
                     mockData.getLstCastProduct().add(cast);
                 }
@@ -291,6 +299,7 @@ public class LogicWebController {
         }
 
         model.addAttribute("mess", mess);
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
     }
 
 //    edit cast product
