@@ -5,7 +5,7 @@
 
 <body>
 <!--Start ./ header-->
-<div th:replace="/web/default/header :: header"></div>
+<div th:replace="/web/default/header :: head"></div>
 <!--End ./ header-->
 
 <!-- Start ./ content -->
@@ -101,7 +101,7 @@
         <div class="right-pay">
             <span>Tổng tiền hàng (3 Sản phẩm) : </span>
             <span class="pay-money">30000 VNĐ</span>
-            <button type="button" class="btn btn-danger btn-pay">Thanh Toán</button>
+            <button id="btn-pay" type="button" class="btn btn-danger btn-pay">Thanh Toán</button>
         </div>
     </div>
 </main>

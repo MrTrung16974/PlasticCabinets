@@ -10,7 +10,9 @@ $(document).ready(function() {
     // })
     // ;
 
+    // hide & show sup mess
     $('div#sub-messenger').delay(3000).show(500);
+    $('div#mess').delay(2900).hide(400);
 
     $('div#mess').on('click', function () {
         $('div#sub-messenger').show(500);
@@ -23,13 +25,17 @@ $(document).ready(function() {
         $('div#mess').show(600);
     });
 
+    // hide & show sup menu
     $("a#notifications").mouseenter(function(){
-        console.log("OK");
         $('div#sub-menu').show(500);
     });
 
-    $("div#sub-menu").mouseleave(function(){
+
+    $("div#hiden-sub-menu").mouseleave(function(){
         console.log("OK");
+        $('div#sub-menu').hide(500);
+    });
+    $("div#sub-menu").mouseleave(function(){
         $('div#sub-menu').hide(500);
     });
 
@@ -92,9 +98,20 @@ $(document).ready(function() {
             contentType: 'application/json',
             success : function () {
                 window.location.reload();
-                // window.location.href = "http://localhost:8080/product/cast?id=" + keyword;
             }
         });
     });
 
+    $("button#btn-pay").on('click', function () {
+        let keyword = $("#idCastProduct").val();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/product/pay?id="+ 1,
+            processData: false,
+            contentType: 'application/json',
+            success : function () {
+                window.location.href = "http://localhost:8080/product/pay?id=" + 1;
+            }
+        });
+    });
 });

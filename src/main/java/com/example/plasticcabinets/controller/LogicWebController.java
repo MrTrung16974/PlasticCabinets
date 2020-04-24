@@ -23,6 +23,7 @@ public class LogicWebController {
     private Levenshtein leven = new Levenshtein();
     private Set<Products> lstSimilarProduct = new HashSet<>();
     private Set<Products> lstCast = new HashSet<>();
+    private List<Products> lstPay = new ArrayList<>();
     private List<Products> lstCastProduct = new ArrayList<>();
     private List<CastProduct> allCastProduct = new ArrayList<>();
     private List<Products> productOfPage = new ArrayList<>();
@@ -307,6 +308,30 @@ public class LogicWebController {
     @ResponseBody
     public void editCast(Model model, @RequestParam(value = "id", defaultValue = "0") int id,
                            @RequestParam(value = "countProduct", defaultValue = "0") int countProduct) {
+    }
+
+    //    return value in cast.html
+    @RequestMapping("/pay")
+    public String PayProduct(Model model, @RequestParam(value = "id", defaultValue = "0") int id) {
+        lstCastProduct = productsRepository.getCastProduct();
+        String mess = null;
+
+        if(lstPay.isEmpty() && lstPay != null) {
+            lstPay.clear();
+        }
+        for (Products product : lstCastProduct) {
+            if(product.getCreateBy() == id) {
+                lstPay.add(product);
+            }
+        }
+
+        if(lstPay.isEmpty() && lstPay != null) {
+            mess = "Không có sản phẩm tồn tại!";
+        }
+        model.addAttribute("lstPay", lstPay);
+        model.addAttribute("mess", mess);
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
+        return "web/page/payProduct";
     }
 
 }

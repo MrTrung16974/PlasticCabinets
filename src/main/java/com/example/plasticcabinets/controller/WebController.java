@@ -59,4 +59,10 @@ public class WebController {
         model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "web/page/cast";
     }
+
+    @RequestMapping("/pagePay")
+    public String PayProduct(Model model) {
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
+        return "web/page/payProduct";
+    }
 }

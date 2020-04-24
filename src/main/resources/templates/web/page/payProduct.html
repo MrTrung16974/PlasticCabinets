@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--Start ./ header-->
+<div th:replace="/web/default/header :: head"></div>
+<!--End ./ header-->
+
+<body>
+<!--Start ./ header-->
+<div th:replace="/web/default/header :: header"></div>
+<!--End ./ header-->
+
+<!-- Start ./ content -->
+<main class="content container">
+    <div class="header-pay">
+        <div class="info-pay">
+            <img width="150px" class="image-logo" height="66" th:src="@{/image/logo-viet-nhat.png}" >
+            <h1>Thanh Toán</h1>
+        </div>
+        <div class="background-banner"></div>
+        <div class="address">
+            <h3><i class="fas fa-map-marker-alt"></i> Địa chỉ nhận hàng</h3>
+            <span class="name-user">Nguyễn Tiến Trung (+84) 376213798</span>
+            <span class="address-user">Số 19/Ngõ số 3/Tổ 8B, Xã Bắc Hồng, Huyện Đông Anh, Hà Nội</span>
+            <span><a href="#">Mặc định</a></span>
+            <span><a href="#">Thay đổi</a></span>
+        </div>
+    </div>
+    <div class="body-pay">
+        <div class="lst-pay">
+            <div  class="row">
+                <div class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                    <h6>Sản phẩm</h6>
+                </div>
+                <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                    <p>Đơn giá</p>
+                </div>
+                <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                    <p>Số lượng</p>
+                </div>
+                <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                    <p>Số tiền</p>
+                </div>
+            </div>
+            <div class="lst-cast-product" th:each="product : ${lstPay}">
+                <input type="hidden" id="idCastProduct" th:value="${product.getId()}">
+                <div class="row">
+                    <div style="display: flex;" class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                        <div class="img-product">
+                            <img th:src="@{${product.getImgProduct()}}" height="100" width="100" alt="ảnh sản phẩm">
+                        </div>
+                        <div class="name-product">
+                            <a th:href="@{${'/product/detail/' + product.getId()}}" th:text="${product.getName()}" class="card-title">Tủ trẻ em</a>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                        <div class="cast-body">
+                            <p class="card-money" th:text="${#numbers.formatDecimal(product.getNewPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'" >99.000 VND</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-light">1</button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                        <div class="cast-footer">
+                            <p th:text="${#numbers.formatDecimal(product.getNewPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'">20000 VNĐ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="infomation-pay">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <span>Lời nhắn : </span>
+                    <input type="text" placeholder="Lưu ý cho người bán" id="note-pay" name="note-pay">
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <span>Vận chuyển : </span>
+                    <span class="money-transport">₫30.202</span>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <span>Tổng số tiền (2 sản phẩm) : </span>
+                    <span>₫79.202</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pay-footer">
+        <div class="method-pay">
+            <div>
+                <p>Phương thức thanh toán</p>
+            </div>
+            <div>
+                <span>Thanh toán khi nhận hàng</span>
+                <span><a href="#">Thay đỏi</a></span>
+            </div>
+        </div>
+        <div class="infomation-pay">
+            <div>
+                <p>Tổng tiền hàng : </p>
+                <span>₫50.000</span>
+                <p>Phí vận chuyển : </p>
+                <span>₫30.202</span>
+                <p>Tổng thanh toán: : </p>
+                <span>₫79.202</span>
+            </div>
+        </div>
+        <div class="btn-pay">
+            <button type="button" class="btn btn-success">Đặt Hàng</button>
+        </div>
+    </div>
+</main>
+<!-- End ./ content -->
+
+<!-- Start ./ footer -->
+<div th:replace="/web/default/footer :: footer"></div>
+<!-- End ./ footer -->
+
+<!-- start ./ messenger -->
+<div th:replace="/web/default/footer :: messenger"></div>
+<!-- end ./ messenger -->
+
+<!-- start ./ messenger -->
+<div th:replace="/web/default/footer :: javascript"></div>
+<!-- end ./ messenger -->
+</body>
+
+</html>
