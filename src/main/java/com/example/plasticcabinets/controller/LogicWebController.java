@@ -197,7 +197,7 @@ public class LogicWebController {
                 ? ( lstProduct.size()/Constant.PAGE_SIZE )
                 : ( lstProduct.size()/Constant.PAGE_SIZE -1);
 
-        if(lstPageProduct.isEmpty() && lstPageProduct != null) {
+        if(lstPageProduct.isEmpty() && lstPageProduct == null) {
             mess = "Không có sản phẩm tồn tại!";
         }
         model.addAttribute("totalPage", totalPage);
@@ -266,7 +266,7 @@ public class LogicWebController {
                 ? ( lstCastProduct.size()/Constant.PAGE_SIZE )
                 : ( lstCastProduct.size()/Constant.PAGE_SIZE -1);
 
-        if(lstCast.isEmpty() && lstCast != null) {
+        if(lstCast.isEmpty() && lstCast == null) {
             mess = "Không có sản phẩm tồn tại!";
         }
 
@@ -310,13 +310,13 @@ public class LogicWebController {
                            @RequestParam(value = "countProduct", defaultValue = "0") int countProduct) {
     }
 
-    //    return value in cast.html
+    //    return value in pay.html
     @RequestMapping("/pay")
     public String PayProduct(Model model, @RequestParam(value = "id", defaultValue = "0") int id) {
         lstCastProduct = productsRepository.getCastProduct();
         String mess = null;
-
-        if(lstPay.isEmpty() && lstPay != null) {
+        System.out.println(lstPay.isEmpty() );
+        if(!lstPay.isEmpty() && lstPay != null) {
             lstPay.clear();
         }
         for (Products product : lstCastProduct) {
@@ -325,7 +325,7 @@ public class LogicWebController {
             }
         }
 
-        if(lstPay.isEmpty() && lstPay != null) {
+        if(lstPay.isEmpty() && lstPay == null) {
             mess = "Không có sản phẩm tồn tại!";
         }
         model.addAttribute("lstPay", lstPay);
