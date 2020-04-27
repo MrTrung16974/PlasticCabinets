@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -60,7 +61,7 @@ public class LogicAdminControler {
     //    create image product
     @PostMapping(value = "/image-product")
     @ResponseBody
-    public int createImgProduct(@RequestBody ImageProduct imgProduct) {
+    public int createImgProduct(@Valid @RequestBody ImageProduct imgProduct) {
         if(imgProduct.getImgProduct1() != null) {
             imgProduct.setCreateBy(1);
             imageProductRepository.save(imgProduct);
@@ -74,7 +75,7 @@ public class LogicAdminControler {
     //    create product
     @PostMapping(value = "/create-product")
     @ResponseBody
-    public int createProduct(@RequestBody Products product) {
+    public int createProduct(@Valid @RequestBody Products product) {
         if(product.getName() != null && product.getDescription() != null) {
             product.setUserId(1);
             product.setIdImg(1);
@@ -104,7 +105,7 @@ public class LogicAdminControler {
 //    Edit product
     @PostMapping("/edit-product/{id}")
     @ResponseBody
-    public int editProduct(@PathVariable("id") Integer idProduct, @RequestBody Products product) {
+    public int editProduct(@PathVariable("id") Integer idProduct,@Valid @RequestBody Products product) {
         product.setId(idProduct);
         System.out.println(product);
         Products productModel = productsRepository.findById(idProduct).orElseThrow(() -> new ResurceNotFoundException("Product", "id", idProduct));
@@ -158,7 +159,7 @@ public class LogicAdminControler {
     //    create user
     @PostMapping(value = "/create-user")
     @ResponseBody
-    public int createUser(@RequestBody Users user) {
+    public int createUser(@Valid @RequestBody Users user) {
         if(user.getName() != null && user.getAccount() != null) {
             String pass = user.getPassword();
             String hashPass = BCrypt.hashpw(pass, BCrypt.gensalt(12));
@@ -208,7 +209,7 @@ public class LogicAdminControler {
     //    Edit User
     @PostMapping("/edit-user/{id}")
     @ResponseBody
-    public int editUser(@PathVariable("id") Integer idUser, @RequestBody Users user) {
+    public int editUser(@PathVariable("id") Integer idUser, @Valid @RequestBody Users user) {
         user.setId(idUser);
         System.out.println(user);
         Users userModel = userRepository.findById(idUser).orElseThrow(() -> new ResurceNotFoundException("User", "id", idUser));

@@ -197,7 +197,7 @@ public class LogicWebController {
                 ? ( lstProduct.size()/Constant.PAGE_SIZE )
                 : ( lstProduct.size()/Constant.PAGE_SIZE -1);
 
-        if(lstPageProduct.isEmpty() && lstPageProduct == null) {
+        if(lstPageProduct.isEmpty()) {
             mess = "Không có sản phẩm tồn tại!";
         }
         model.addAttribute("totalPage", totalPage);
@@ -206,6 +206,41 @@ public class LogicWebController {
         model.addAttribute("mess", mess);
         model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "web/page/searchProduct";
+    }
+
+//    return value in cast.html
+    @RequestMapping("/cast")
+    public String Cast(Model model, @RequestParam(value = "id", defaultValue = "0") int id,
+                       @RequestParam(value = "Page", defaultValue = "0") int page) {
+        lstCastProduct = productsRepository.getCastProduct();
+        String mess = null;
+
+        int index = page * Constant.PAGE_SIZE;
+        int lengthProduct = page * Constant.PAGE_SIZE + Constant.PAGE_SIZE >  lstCastProduct.size() ?   lstCastProduct.size() :
+                page * Constant.PAGE_SIZE + Constant.PAGE_SIZE;
+
+        if(lstCast != null) {
+            lstCast.clear();
+        }
+        for(int i = index; i< lengthProduct; i++) {
+            Products product =  lstCastProduct.get(i);
+            if(product.getCreateBy() == id) {
+                lstCast.add(product);
+            }
+        }
+        int totalPage = lstCastProduct.size() % Constant.PAGE_SIZE != 0 || lstCastProduct.size() % Constant.PAGE_SIZE == 0
+                ? ( lstCastProduct.size()/Constant.PAGE_SIZE )
+                : ( lstCastProduct.size()/Constant.PAGE_SIZE -1);
+        if(lstCast.isEmpty()) {
+            mess = "Không có sản phẩm tồn tại!";
+        }
+
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("lstCast", lstCast);
+        model.addAttribute("mess", mess);
+        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
+        return "web/page/cast";
     }
 
     //    save producy in cast
@@ -240,42 +275,6 @@ public class LogicWebController {
 
         model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
         return "redirect:/product/productHome";
-    }
-
-//    return value in cast.html
-    @RequestMapping("/cast")
-    public String Cast(Model model, @RequestParam(value = "id", defaultValue = "0") int id,
-                       @RequestParam(value = "Page", defaultValue = "0") int page) {
-        lstCastProduct = productsRepository.getCastProduct();
-        String mess = null;
-
-        int index = page * Constant.PAGE_SIZE;
-        int lengthProduct = page * Constant.PAGE_SIZE + Constant.PAGE_SIZE >  lstCastProduct.size() ?   lstCastProduct.size() :
-                page * Constant.PAGE_SIZE + Constant.PAGE_SIZE;
-
-        if(lstCast != null) {
-            lstCast.clear();
-        }
-        for(int i = index; i< lengthProduct; i++) {
-            Products product =  lstCastProduct.get(i);
-            if(product.getCreateBy() == id) {
-                lstCast.add(product);
-            }
-        }
-        int totalPage = lstCastProduct.size() % Constant.PAGE_SIZE != 0 || lstCastProduct.size() % Constant.PAGE_SIZE == 0
-                ? ( lstCastProduct.size()/Constant.PAGE_SIZE )
-                : ( lstCastProduct.size()/Constant.PAGE_SIZE -1);
-
-        if(lstCast.isEmpty() && lstCast == null) {
-            mess = "Không có sản phẩm tồn tại!";
-        }
-
-        model.addAttribute("totalPage", totalPage);
-        model.addAttribute("currentPage", page);
-        model.addAttribute("lstCast", lstCast);
-        model.addAttribute("mess", mess);
-        model.addAttribute("lengthProduct", mockData.getLstCastProduct().size());
-        return "web/page/cast";
     }
 
 //    delete cast product
@@ -315,8 +314,8 @@ public class LogicWebController {
     public String PayProduct(Model model, @RequestParam(value = "id", defaultValue = "0") int id) {
         lstCastProduct = productsRepository.getCastProduct();
         String mess = null;
-        System.out.println(lstPay.isEmpty() );
-        if(!lstPay.isEmpty() && lstPay != null) {
+
+        if(!lstPay.isEmpty()) {
             lstPay.clear();
         }
         for (Products product : lstCastProduct) {
@@ -325,7 +324,7 @@ public class LogicWebController {
             }
         }
 
-        if(lstPay.isEmpty() && lstPay == null) {
+        if(lstPay.isEmpty()) {
             mess = "Không có sản phẩm tồn tại!";
         }
         model.addAttribute("lstPay", lstPay);

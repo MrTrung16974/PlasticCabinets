@@ -28,6 +28,7 @@ $(document).ready(function () {
     $("#btnSaveProductCreate").on('click', function () {
         console.log("OK1");
         var imgProduct = {
+            id: $("#createProductIdImage").val(),
             imgProduct1: $("#newImageProduct1").attr('src'),
             imgProduct2: $("#newImageProduct2").attr('src'),
             imgProduct3: $("#newImageProduct3").attr('src'),
@@ -56,7 +57,6 @@ $(document).ready(function () {
     $("#btnSaveProductCreate").on('click', function () {
         console.log("OK");
         console.log($("#createProductType").val());
-        let idProduct = $("#editProductId").val();
         let product = {
             name:$("#createProductName").val().trim(),
             description:$("#createProductDescription").val().trim(),
@@ -65,7 +65,8 @@ $(document).ready(function () {
             oldPrice:$("#createProductOldPrice").val().trim(),
             promotion:$("#createProductPromotion").val(),
             star: $("#createProductStar").val(),
-            categoryId: $("#createProductType").val()
+            categoryId: $("#createProductType").val(),
+            idImg: $("#createProductIdImage").val()
         };
         console.log(product);
         $.ajax({
@@ -75,13 +76,13 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function(data) {
                 console.log(data);
-                window.location.reload();
                 if (data == 0) {
                     toastr.success('Upload product thành công ', 'Haha!');
                 }
                 if (data == 4) {
                     toastr.error('có lỗi xảy ra . Xin vui lòng thử lại', 'Inconceivable!');
                 }
+                window.location.reload();
             },
             error: function () {
                 alert("Lỗi hệ thống vui lòng quay lại sau");
