@@ -8,6 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 @Controller
 @RequestMapping("/product")
 public class HomeController {
@@ -23,8 +28,17 @@ public class HomeController {
     @Autowired
     MockData mockData;
 
+    @RequestMapping("/login")
+    public String login(Model model, HttpServletResponse response,
+                       HttpServletRequest request) throws ServletException, IOException {
+        model.addAttribute("lstProduct", mockData.getAllProduct());
+        model.addAttribute("allImageProduct", mockData.getAllImageProduct());
+        return "admin/page/login";
+    }
+
     @RequestMapping("/home")
-    public String home(Model model){
+    public String home(Model model, HttpServletResponse response,
+                       HttpServletRequest request) throws ServletException, IOException {
         model.addAttribute("lstProduct", mockData.getAllProduct());
         model.addAttribute("allImageProduct", mockData.getAllImageProduct());
         return "admin/index";

@@ -3,22 +3,22 @@ CREATE SCHEMA `platiccabinets` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_c
 use platiccabinets;
 
 -- create table user
-create table users(
-	id int(6) unsigned primary key not null AUTO_INCREMENT,
-    name nvarchar(100) not null,
-    account nvarchar(100) not null,
-    password varchar(100) not null,
-    account_bank varchar(150) null,
-    address nvarchar(255) not null,
-	user_face varchar(200) null,
-    email varchar(100) null,
-    sex boolean not null,
-    birthday date null,
-    phone int(12) null,
-    role_id int(6) unsigned not null,
-    created_date datetime null,
-    modifieddate datetime null,
-    createby int(6) unsigned not null
+CREATE TABLE users (
+    id INT(6) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name NVARCHAR(100) NOT NULL,
+    account NVARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    account_bank VARCHAR(150) NULL,
+    address NVARCHAR(255) NOT NULL,
+    user_face VARCHAR(200) NULL,
+    email VARCHAR(100) NULL,
+    sex BOOLEAN NOT NULL,
+    birthday DATE NULL,
+    phone INT(12) NULL,
+    role_id INT(6) UNSIGNED NOT NULL,
+    created_date DATETIME NULL,
+    modifieddate DATETIME NULL,
+    createby INT(6) UNSIGNED NOT NULL
 );
 
 -- create table love product

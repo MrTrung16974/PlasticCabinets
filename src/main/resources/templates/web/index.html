@@ -42,110 +42,108 @@
     <!--End ./ Slide-->
     <!-- Start ./ content -->
     <main class="content container">
-        <div class="all-content">
-            <div class="menu">
-                <a th:href="@{'/product/productHome?type=1'}" class="active">
-                    <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-tre-em.jpg}">
-                    <br>
-                    <p>Tủ trẻ em</p>
-                </a>
-                <a th:href="@{'/product/productHome?type=2'}">
-                    <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-quan-ao.jpg}">
-                    <br>
-                    <p>Tủ quần áo</p>
-                </a>
-                <a th:href="@{'/product/productHome?type=3'}">
-                    <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-dai-loan-canh-son.jpg}">
-                    <br>
-                    <p>Tủ đài loan cánh sơn</p>
-                </a>
-                <a th:href="@{'/product/productHome?type=4'}">
-                    <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-quan-ao-han-quoc.jpg}">
-                    <br>
-                    <p>Tủ quần áo hàn quốc</p>
-                </a>
-                <a th:href="@{'/product/productHome?type=5'}">
-                    <img width="50" height="50" class="product" th:src="@{/image/Icon/ban-hoc.jpg}">
-                    <br>
-                    <p>Bàn học</p>
-                </a>
-                <a th:href="@{'/product/productHome?type=6'}">
-                    <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-giay.jpg}">
-                    <br>
-                    <p>Tủ giày</p>
-                </a>
-                <a th:href="@{'/product/productHome?type=7'}">
-                    <img width="50" height="50" class="product" th:src="@{/image/Icon/giuong-va-tu-bep.jpg}">
-                    <br>
-                    <p>Giường và tủ bếp</p>
-                </a>
-                <a th:href="@{'/product/productHome?type=8'}">
-                    <img width="50" height="50" class="product" th:src="@{/image/Icon/ke-tivi.jpg}">
-                    <br>
-                    <p>Kệ tivi</p>
-                </a>
-            </div>
-            <div class="list-product">
-                <div th:each="product : ${productOfPage}" class="card">
-                    <img th:src="@{${product.getImgProduct()}}" height="140" class="card-img-top rounded" alt="...">
-                    <div th:text="${product.getPromotion() + ' %'}" class="sale">54%</div>
-                    <div class="card-body">
-                        <a th:href="@{${'/product/detail/' + product.getId()}}" th:text="${product.getName()}" class="card-title">Tủ trẻ em</a>
-                        <p th:text="${product.getDescription()}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <p  class="card-money"><s th:text="${#numbers.formatDecimal(product.getOldPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'">99.000 VND</s></p>
-                        <p style="font-size: 20px;font-weight: 700;" th:text="${#numbers.formatDecimal(product.getNewPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'" class="card-money">99.000 VND</p>
-                        <a th:href="@{${'/product/cast/' + product.getId()}}" class="btn btn-light"><i class="fas fa-cart-plus"></i></a>
-                        <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                        <div class="star">
-                            <i th:each="i : ${#numbers.sequence(1,5)}"
-                               th:class="${product.getStar() >= i ? 'fas fa-star' : 'far fa-star'}"></i>
-                        </div>
-                        <p class="card-text">Đã bán 2,4k</p>
+        <div class="menu">
+            <a th:href="@{'/product/productHome?type=1'}" class="active">
+                <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-tre-em.jpg}">
+                <br>
+                <p>Tủ trẻ em</p>
+            </a>
+            <a th:href="@{'/product/productHome?type=2'}">
+                <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-quan-ao.jpg}">
+                <br>
+                <p>Tủ quần áo</p>
+            </a>
+            <a th:href="@{'/product/productHome?type=3'}">
+                <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-dai-loan-canh-son.jpg}">
+                <br>
+                <p>Tủ đài loan cánh sơn</p>
+            </a>
+            <a th:href="@{'/product/productHome?type=4'}">
+                <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-quan-ao-han-quoc.jpg}">
+                <br>
+                <p>Tủ quần áo hàn quốc</p>
+            </a>
+            <a th:href="@{'/product/productHome?type=5'}">
+                <img width="50" height="50" class="product" th:src="@{/image/Icon/ban-hoc.jpg}">
+                <br>
+                <p>Bàn học</p>
+            </a>
+            <a th:href="@{'/product/productHome?type=6'}">
+                <img width="50" height="50" class="product" th:src="@{/image/Icon/tu-giay.jpg}">
+                <br>
+                <p>Tủ giày</p>
+            </a>
+            <a th:href="@{'/product/productHome?type=7'}">
+                <img width="50" height="50" class="product" th:src="@{/image/Icon/giuong-va-tu-bep.jpg}">
+                <br>
+                <p>Giường và tủ bếp</p>
+            </a>
+            <a th:href="@{'/product/productHome?type=8'}">
+                <img width="50" height="50" class="product" th:src="@{/image/Icon/ke-tivi.jpg}">
+                <br>
+                <p>Kệ tivi</p>
+            </a>
+        </div>
+        <div class="list-product">
+            <div th:each="product : ${productOfPage}" class="card">
+                <img th:src="@{${product.getImgProduct()}}" height="140" class="card-img-top rounded" alt="...">
+                <div th:text="${product.getPromotion() + ' %'}" class="sale">54%</div>
+                <div class="card-body">
+                    <a th:href="@{${'/product/detail/' + product.getId()}}" th:text="${product.getName()}" class="card-title">Tủ trẻ em</a>
+                    <p th:text="${product.getDescription()}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p  class="card-money"><s th:text="${#numbers.formatDecimal(product.getOldPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'">99.000 VND</s></p>
+                    <p style="font-size: 20px;font-weight: 700;" th:text="${#numbers.formatDecimal(product.getNewPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'" class="card-money">99.000 VND</p>
+                    <a th:href="@{${'/product/cast/' + product.getId()}}" class="btn btn-light"><i class="fas fa-cart-plus"></i></a>
+                    <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
+                    <div class="star">
+                        <i th:each="i : ${#numbers.sequence(1,5)}"
+                           th:class="${product.getStar() >= i ? 'fas fa-star' : 'far fa-star'}"></i>
                     </div>
+                    <p class="card-text">Đã bán 2,4k</p>
                 </div>
-            </div>
-            <div class="pagination" >
-                <a th:each="i : ${#numbers.sequence(0, totalPage)}"
-                   th:class="${currentPage == i} ? 'active' : 'inactive'"
-                   th:href="@{'productHome?Page=' + ${i}}" th:text="${i+1}">
-                </a>
-                <span>...</span>
-                <a style="width: 40px;" th:href="@{'productHome?Page=' + ${currentPage >= totalPage ? currentPage : currentPage+1}}">Next</a>
-            </div>
-            <div class="list-all-product">
-            <div class="menu-product">
-                <a th:href="@{'/product/productHome?hot=1'}" class="active">Sản phẩm nổi bật</a>
-                <a th:href="@{'/product/productHome?hot=2'}" >Sản phẩm mua nhiều nhất</a>
-                <a th:href="@{'/product/productHome?hot=3'}" >Sản phẩm mới nhất</a>
-            </div>
-            <div class="list-product-newest">
-                <div th:each="product : ${goodLstGame}" class="card">
-                    <img th:src="@{${product.getImgProduct()}}" height="140" class="card-img-top rounded" alt="...">
-                    <div th:text="${product.getPromotion() + ' %'}" class="sale">54%</div>
-                    <div class="card-body">
-                        <a th:href="@{${'/product/detail/' + product.getId()}}" th:text="${product.getName()}" class="card-title">Tủ trẻ em</a>
-                        <p th:text="${product.getDescription()}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <p  class="card-money"><s th:text="${#numbers.formatDecimal(product.getOldPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'">99.000 VND</s></p>
-                        <p style="font-size: 20px;font-weight: 700;" th:text="${#numbers.formatDecimal(product.getNewPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'" class="card-money">99.000 VND</p>
-                        <a th:href="@{${'/product/cast/' + product.getId()}}" class="btn btn-light"><i class="fas fa-cart-plus"></i></a>
-                        <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                        <div class="star">
-                            <i th:each="i : ${#numbers.sequence(1,5)}"
-                               th:class="${product.getStar() >= i ? 'fas fa-star' : 'far fa-star'}"></i>
-                        </div>
-                        <p class="card-text">Đã bán 2,4k</p>
-                    </div>
-                </div>
-            </div>
-            <div class="pagination" >
-                <a th:each="i : ${#numbers.sequence(0,totalGoodPage)}"
-                   th:class="${currentGoodPage == i} ? 'active' : 'inactive'"
-                   th:href="@{'productHome?PageGood=' + ${i}}" th:text="${i+1}">
-                </a>
-                <span>...</span>
-                <a style="width: 40px;" th:href="@{'productHome?PageGood=' + ${currentGoodPage >= totalGoodPage? currentGoodPage: currentGoodPage+1}}">Next</a>
             </div>
         </div>
+        <div class="pagination" >
+            <a th:each="i : ${#numbers.sequence(0, totalPage)}"
+               th:class="${currentPage == i} ? 'active' : 'inactive'"
+               th:href="@{'productHome?Page=' + ${i}}" th:text="${i+1}">
+            </a>
+            <span>...</span>
+            <a style="width: 40px;" th:href="@{'productHome?Page=' + ${currentPage >= totalPage ? currentPage : currentPage+1}}">Next</a>
+        </div>
+        <div class="list-all-product">
+        <div class="menu-product">
+            <a th:href="@{'/product/productHome?hot=1'}" class="active">Sản phẩm nổi bật</a>
+            <a th:href="@{'/product/productHome?hot=2'}" >Sản phẩm mua nhiều nhất</a>
+            <a th:href="@{'/product/productHome?hot=3'}" >Sản phẩm mới nhất</a>
+        </div>
+        <div class="list-product-newest">
+            <div th:each="product : ${goodLstGame}" class="card">
+                <img th:src="@{${product.getImgProduct()}}" height="140" class="card-img-top rounded" alt="...">
+                <div th:text="${product.getPromotion() + ' %'}" class="sale">54%</div>
+                <div class="card-body">
+                    <a th:href="@{${'/product/detail/' + product.getId()}}" th:text="${product.getName()}" class="card-title">Tủ trẻ em</a>
+                    <p th:text="${product.getDescription()}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p  class="card-money"><s th:text="${#numbers.formatDecimal(product.getOldPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'">99.000 VND</s></p>
+                    <p style="font-size: 20px;font-weight: 700;" th:text="${#numbers.formatDecimal(product.getNewPrice(), 0, 'COMMA', 4, 'POINT')} + ' VNĐ'" class="card-money">99.000 VND</p>
+                    <a th:href="@{${'/product/cast/' + product.getId()}}" class="btn btn-light"><i class="fas fa-cart-plus"></i></a>
+                    <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
+                    <div class="star">
+                        <i th:each="i : ${#numbers.sequence(1,5)}"
+                           th:class="${product.getStar() >= i ? 'fas fa-star' : 'far fa-star'}"></i>
+                    </div>
+                    <p class="card-text">Đã bán 2,4k</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="pagination" >
+            <a th:each="i : ${#numbers.sequence(0,totalGoodPage)}"
+               th:class="${currentGoodPage == i} ? 'active' : 'inactive'"
+               th:href="@{'productHome?PageGood=' + ${i}}" th:text="${i+1}">
+            </a>
+            <span>...</span>
+            <a style="width: 40px;" th:href="@{'productHome?PageGood=' + ${currentGoodPage >= totalGoodPage? currentGoodPage: currentGoodPage+1}}">Next</a>
         </div>
     </main>
     <!-- End ./ content -->

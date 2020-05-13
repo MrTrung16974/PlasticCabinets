@@ -1,5 +1,6 @@
 package com.example.plasticcabinets.controller;
 
+import com.example.plasticcabinets.dto.UserDto;
 import com.example.plasticcabinets.exception.ResurceNotFoundException;
 import com.example.plasticcabinets.model.ImageProduct;
 import com.example.plasticcabinets.model.Products;
@@ -8,7 +9,10 @@ import com.example.plasticcabinets.repository.ImageProductRepository;
 import com.example.plasticcabinets.repository.ProductsRepository;
 import com.example.plasticcabinets.repository.UserRepository;
 import com.example.plasticcabinets.service.StoreFileService;
+import com.google.gson.Gson;
 import org.mindrot.jbcrypt.BCrypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +22,12 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/product")
 public class LogicAdminControler {
+
     @Autowired
     ProductsRepository productsRepository;
 
@@ -40,28 +46,36 @@ public class LogicAdminControler {
     @Autowired
     MockData mockData;
 
-//    Upload file img
-    @PostMapping("/upload")
+    @PostMapping(value = "/login-page")
     @ResponseBody
-    public String singleFileUpload(@RequestParam("file") MultipartFile file) {
-        String fileName = "";
-        String fileLink = "http://localhost:8080/link/";
-        try {
-            if(file.isEmpty()) {
-                throw new Exception();
+    public int loginAdmin(@RequestBody UserDto loginUsers){
+        List<Users> lstUsers = userRepository.findAll();
+        Users user = null;
+
+//        hast pass
+//        String hashPass = BCrypt.hashpw(loginUsers.getPassword(), BCrypt.gensalt(12));
+
+        for(Users u : lstUsers) {
+            if(u.getId() == 1) {
+                user = u;
             }
-            fileName = storeFileService.store(file);
-            fileLink += fileName;
-        }catch (Exception e) {
-            e.printStackTrace();
         }
-        return fileLink;
+        if(user == null) {
+            return 4;
+        }
+        if(!user.getAccount().toLowerCase().equals(loginUsers.getEmail().toLowerCase())) {
+            System.out.println("FAIL!");
+            return 4;
+        }
+        return 0;
     }
+
+
 
     //    create image product
     @PostMapping(value = "/image-product")
     @ResponseBody
-    public int createImgProduct(@Valid @RequestBody ImageProduct imgProduct) {
+    public int createImgProduct(@RequestBody ImageProduct imgProduct) {
         if(imgProduct.getImgProduct1() != null) {
             imgProduct.setCreateBy(1);
             imageProductRepository.save(imgProduct);
@@ -75,10 +89,9 @@ public class LogicAdminControler {
     //    create product
     @PostMapping(value = "/create-product")
     @ResponseBody
-    public int createProduct(@Valid @RequestBody Products product) {
+    public int createProduct(@RequestBody Products product) {
         if(product.getName() != null && product.getDescription() != null) {
             product.setUserId(1);
-            product.setIdImg(1);
             product.setCreateBy(1);
             productsRepository.save(product);
         }else {
@@ -105,7 +118,7 @@ public class LogicAdminControler {
 //    Edit product
     @PostMapping("/edit-product/{id}")
     @ResponseBody
-    public int editProduct(@PathVariable("id") Integer idProduct,@Valid @RequestBody Products product) {
+    public int editProduct(@PathVariable("id") Integer idProduct,@RequestBody Products product) {
         product.setId(idProduct);
         System.out.println(product);
         Products productModel = productsRepository.findById(idProduct).orElseThrow(() -> new ResurceNotFoundException("Product", "id", idProduct));
@@ -240,5 +253,23 @@ public class LogicAdminControler {
             System.out.println("errors");
         }
         return "redirect:/product/deleteProduct";
+    }
+
+    //    Upload file img
+    @PostMapping("/upload")
+    @ResponseBody
+    public String singleFileUpload(@RequestParam("file") MultipartFile file) {
+        String fileName = "";
+        String fileLink = "http://localhost:8080/link/";
+        try {
+            if(file.isEmpty()) {
+                throw new Exception();
+            }
+            fileName = storeFileService.store(file);
+            fileLink += fileName;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return fileLink;
     }
 }

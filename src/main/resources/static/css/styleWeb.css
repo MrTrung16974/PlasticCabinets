@@ -252,12 +252,6 @@ div.slide {
 
 /* start ./ content */
 
-main.content div.all-content{
-    box-shadow: 0px 8px 16px #8e7979;
-    border-radius: 3px;
-    background-color: #f5f5f5;
-}
-
 main.content div.menu {
     display: flex;
     padding: 20px 5px 10px 5px;
@@ -383,10 +377,11 @@ main.content div.pagination > a:hover {
 }
 
 main.content div.list-all-product div.menu-product {
-    background: linear-gradient(90deg, rgb(247, 247, 247) 0%, rgb(190, 193, 197) 100%);
     display: flex;
     width: 100%;
+    border-bottom: 2px solid #d3cbdb;
     border-radius: 5px 5px 0px 0px;
+    padding: 10px 12px;
 }
 
 main.content div.list-all-product div.menu-product>a {
@@ -540,41 +535,3 @@ div.messenger div.sub-messenger div.footer-mess>button.btn-mess{
 
 
 /* end ./ messenger */
-
-
-/* Start ./ Pay */
-main.content div.pay {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    z-index: 100;
-    background-color: #fff;
-    height: 120px;
-    box-shadow: 0px 0px 20px #d89c9c;
-}
-
-main.content div.pay div.left-pay {
-    position: absolute;
-    left: 100px;
-    bottom: 20px;
-}
-
-main.content div.pay div.left-pay>span {
-    padding-left: 10px;
-}
-
-main.content div.pay div.right-pay {
-    position: absolute;
-    right: 100px;
-    bottom: 20px;
-
-}
-main.content div.pay div.right-pay>span {
-    padding-right: 20px;
-}
-/* End ./ Pay*/
-
-/* Start ./ Cast */
-
-/* End ./ Cast */

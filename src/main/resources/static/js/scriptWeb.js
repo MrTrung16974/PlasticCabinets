@@ -1,14 +1,4 @@
 $(document).ready(function() {
-    // $(window).scroll(function(event) {
-    //     var pos_body = $('html,body').scrollTop();
-    //     if (pos_body > 20) {
-    //         $('div#top-menu').addClass('flex-menu');
-    //     } else {
-    //         $('div#top-menu').removeClass('flex-menu');
-    //     }
-
-    // })
-    // ;
 
     // hide & show sup mess
     $('div#sub-messenger').delay(3000).show(500);
@@ -30,9 +20,7 @@ $(document).ready(function() {
         $('div#sub-menu').show(500);
     });
 
-
     $("div#hiden-sub-menu").mouseleave(function(){
-        console.log("OK");
         $('div#sub-menu').hide(500);
     });
     $("div#sub-menu").mouseleave(function(){
